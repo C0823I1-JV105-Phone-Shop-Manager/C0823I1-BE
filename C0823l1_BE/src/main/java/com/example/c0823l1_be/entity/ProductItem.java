@@ -32,4 +32,8 @@ public class ProductItem {
 
     @Column(nullable = false)
     private Boolean deleted = false;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "order_id")
+    private Order order;
 }
