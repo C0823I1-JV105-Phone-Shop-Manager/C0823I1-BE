@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/auth/register")
-    public ResponseEntity<ReqRes> regeister(@RequestBody ReqRes reg){
+    public ResponseEntity<ReqRes> register(@RequestBody ReqRes reg){
         return ResponseEntity.ok(userService.register(reg));
     }
 
@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/admin/get-users/{userId}")
-    public ResponseEntity<ReqRes> getUSerByID(@PathVariable Integer userId){
+    public ResponseEntity<ReqRes> getUserByID(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.getUsersById(userId));
 
     }
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @DeleteMapping("/admin/delete/{userId}")
-    public ResponseEntity<ReqRes> deleteUSer(@PathVariable Integer userId){
+    public ResponseEntity<ReqRes> deleteUser(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.deleteUser(userId));
     }
 

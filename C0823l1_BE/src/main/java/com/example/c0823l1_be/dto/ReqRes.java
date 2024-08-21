@@ -25,7 +25,7 @@ public class ReqRes {
     private String password;
     private String fullName;
     private String address;
-    private Date dob;
+    private String dob;
     private String phoneNumber;
     private User user;
     private Staff staff;

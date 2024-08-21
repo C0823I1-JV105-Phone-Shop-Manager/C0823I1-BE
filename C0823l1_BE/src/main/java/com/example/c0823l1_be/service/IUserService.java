@@ -11,7 +11,7 @@ public interface IUserService {
     public ReqRes refreshToken(ReqRes refreshTokenReqiest);
 
 
-        public ReqRes logout(ReqRes logoutRequest);
+    public ReqRes logout(ReqRes logoutRequest);
 
     public ReqRes getAllUsers();
 

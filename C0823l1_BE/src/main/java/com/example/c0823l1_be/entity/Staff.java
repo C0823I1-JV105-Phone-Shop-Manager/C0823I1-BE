@@ -24,7 +24,7 @@ public class Staff {
     private String address;
 
     @Column(nullable = false)
-    private Date dob;
+    private String dob;
 
     @Column(nullable = false,length = 10,name = "phone_number")
     private String phoneNumber;
