@@ -1,4 +1,4 @@
-package com.example.c0823l1_be.service;
+package com.example.c0823l1_be.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

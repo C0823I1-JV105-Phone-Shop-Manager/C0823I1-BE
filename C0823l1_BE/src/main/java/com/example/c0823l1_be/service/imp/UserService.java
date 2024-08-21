@@ -1,16 +1,23 @@
 package com.example.c0823l1_be.service.imp;
 
 import com.example.c0823l1_be.dto.ReqRes;
+import com.example.c0823l1_be.dto.UserDto;
+import com.example.c0823l1_be.entity.Role;
+import com.example.c0823l1_be.entity.Staff;
 import com.example.c0823l1_be.entity.User;
+import com.example.c0823l1_be.repository.RoleRepository;
+import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.repository.UserRepository;
 import com.example.c0823l1_be.service.IUserService;
-import com.example.c0823l1_be.service.JWTUtils;
+import com.example.c0823l1_be.security.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +27,11 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private StaffRepository staffRepository;
+
     @Autowired
     private JWTUtils jwtUtils;
     @Autowired
@@ -32,12 +44,23 @@ public class UserService implements IUserService {
 
         try {
             User user = new User();
+            Staff staff = new Staff();
+            Role role = roleRepository.findByName(registrationRequest.getRole());
             user.setUsername(registrationRequest.getUsername());
             user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+            user.setRole(role);
+            staff.setUser(user);
+            staff.setFullName(registrationRequest.getFullName());
+            staff.setAddress(registrationRequest.getAddress());
+            staff.setDob(registrationRequest.getDob());
+            staff.setPhoneNumber(registrationRequest.getPhoneNumber());
             User usersResult = userRepository.save(user);
-            if (user.getId()>0) {
+            Staff staffResult = staffRepository.save(staff);
+            if (user.getId()>0 && staff.getId()>0) {
+                resp.setStaff((staffResult));
                 resp.setUser((usersResult));
                 resp.setMessage("User Saved Successfully");
+                resp.setMessage("Staff Saved Successfully");
                 resp.setStatusCode(200);
             }
 
@@ -189,10 +212,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ReqRes getMyInfo(String email) {
+    public ReqRes getMyInfo(String username) {
         ReqRes reqRes = new ReqRes();
         try {
-            Optional<User> userOptional = userRepository.findByUsername(email);
+            Optional<User> userOptional = userRepository.findByUsername(username);
             if (userOptional.isPresent()) {
                 reqRes.setUser(userOptional.get());
                 reqRes.setStatusCode(200);

@@ -3,6 +3,8 @@ package com.example.c0823l1_be.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Entity
 @Table
 @Data
@@ -13,5 +15,7 @@ public class Role {
 
     @Column(nullable = false,length = 30)
     private String name;
+
+
 
 }

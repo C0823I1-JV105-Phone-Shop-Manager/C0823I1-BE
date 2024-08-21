@@ -1,10 +1,12 @@
 package com.example.c0823l1_be.dto;
 
+import com.example.c0823l1_be.entity.Staff;
 import com.example.c0823l1_be.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -21,7 +23,13 @@ public class ReqRes {
     private String role;
     private String username;
     private String password;
+    private String fullName;
+    private String address;
+    private Date dob;
+    private String phoneNumber;
     private User user;
+    private Staff staff;
     private List<User> userList;
+    private List<Staff> staffList;
 
 }
