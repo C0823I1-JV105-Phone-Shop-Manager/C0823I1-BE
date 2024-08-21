@@ -14,7 +14,7 @@ public class Staff {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id" , nullable = false)
     private User user;
 
     @Column(nullable = false,name = "full_name",length = 200)

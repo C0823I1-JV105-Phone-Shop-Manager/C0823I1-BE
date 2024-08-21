@@ -12,7 +12,7 @@ public class Product {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "brand_id")
+    @JoinColumn(name = "brand_id" , nullable = false)
     private Brand brand;
 
     @Column(nullable = false,length = 150)

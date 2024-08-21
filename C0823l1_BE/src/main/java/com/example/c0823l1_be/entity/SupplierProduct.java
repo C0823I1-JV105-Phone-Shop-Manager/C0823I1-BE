@@ -12,10 +12,10 @@ public class SupplierProduct {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
+    @JoinColumn(name = "supplier_id" , nullable = false)
     private Supplier supplier;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id" , nullable = false)
     private Product product;
 }

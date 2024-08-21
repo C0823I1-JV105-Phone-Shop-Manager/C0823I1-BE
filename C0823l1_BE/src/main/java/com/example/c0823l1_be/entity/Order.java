@@ -13,11 +13,11 @@ public class Order {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id" , nullable = false)
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "staff_id")
+    @JoinColumn(name = "staff_id" , nullable = false)
     private Staff staff;
 
     @Column(nullable = false,name = "create_on")
