@@ -215,6 +215,7 @@ public class UserService implements IUserService {
         ReqRes reqRes = new ReqRes();
         try {
             Optional<User> userOptional = userRepository.findByUsername(username);
+            Optional<Staff> staffOptional = staffRepository.findById(userOptional.get().getId());
             if (userOptional.isPresent()) {
                 reqRes.setUser(userOptional.get());
                 reqRes.setStatusCode(200);
