@@ -7,19 +7,18 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
-public class SupplierAddEditController {
+@CrossOrigin("*")
+public class SupplierRestController {
     @Autowired
     private ISupplierAddEditService iSupplierAddEditService;
 
-    @PostMapping("/api/create")
+    @PostMapping("/api/supplier/create")
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDto supplierDto){
         Supplier supplier = new Supplier();
         Boolean isSaveOK = false;
@@ -28,7 +27,7 @@ public class SupplierAddEditController {
         if (isSaveOK == true) {
             return new ResponseEntity<>(HttpStatus.CREATED); //Thành công và tạo được data
         } else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); //500
         }
     }
 }
