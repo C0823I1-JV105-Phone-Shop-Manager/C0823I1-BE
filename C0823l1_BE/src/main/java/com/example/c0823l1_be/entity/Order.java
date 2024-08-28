@@ -3,13 +3,21 @@ package com.example.c0823l1_be.entity;
 import com.example.c0823l1_be.customId.OrderIdGenerator;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SoftDelete;
 
+import java.sql.Timestamp;
 import java.util.Date;
-
 @Entity
 @Table(name = "orders")
-@Data
+@SoftDelete
+@Setter
+@Getter
+@NoArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
@@ -30,10 +38,8 @@ public class Order {
     @JoinColumn(name = "staff_id" , nullable = false)
     private Staff staff;
 
-    @Column(nullable = false,name = "create_on")
-    private Date createOn;
-
-    @Column(nullable = false)
-    private boolean deleted = false;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Timestamp createdOn;
 
 }
