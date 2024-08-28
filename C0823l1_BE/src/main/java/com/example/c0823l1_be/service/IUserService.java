@@ -21,7 +21,8 @@ public interface IUserService {
 
     public ReqRes updateUser(Integer userId, User updatedUser);
 
-    public ReqRes getMyInfo(String email);
+    public ReqRes getMyInfo(String username);
+
 
 
 

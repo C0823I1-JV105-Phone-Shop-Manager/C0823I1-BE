@@ -15,20 +15,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/auth/register")
-    public ResponseEntity<ReqRes> register(@RequestBody ReqRes reg){
-        return ResponseEntity.ok(userService.register(reg));
-    }
-
-    @PostMapping("/auth/login")
-    public ResponseEntity<ReqRes> login(@RequestBody ReqRes req){
-        return ResponseEntity.ok(userService.login(req));
-    }
-
-    @PostMapping("/auth/refresh")
-    public ResponseEntity<ReqRes> refreshToken(@RequestBody ReqRes req){
-        return ResponseEntity.ok(userService.refreshToken(req));
-    }
 
     @GetMapping("/admin/get-all-users")
     public ResponseEntity<ReqRes> getAllUsers(){
@@ -36,10 +22,9 @@ public class UserController {
 
     }
 
-    @GetMapping("/admin/get-users/{userId}")
+    @GetMapping("/adminstaff/{userId}")
     public ResponseEntity<ReqRes> getUserByID(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.getUsersById(userId));
-
     }
 
     @PutMapping("/admin/update/{userId}")
@@ -47,12 +32,12 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUser(userId, reqres));
     }
 
-    @GetMapping("/adminuser/get-profile")
-    public ResponseEntity<ReqRes> getMyProfile(){
+    @GetMapping("/adminstaff/profile")
+    public ResponseEntity<ReqRes> getMyProfile() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        ReqRes response = userService.getMyInfo(email);
-        return  ResponseEntity.status(response.getStatusCode()).body(response);
+        String username = authentication.getName();
+        ReqRes response = userService.getMyInfo(username);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
     @DeleteMapping("/admin/delete/{userId}")
