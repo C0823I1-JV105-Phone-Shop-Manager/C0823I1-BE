@@ -78,6 +78,7 @@ public class UserService implements IUserService {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                             loginRequest.getPassword()));
+
             var user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
             var jwt = jwtUtils.generateToken(user);
             var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
@@ -121,7 +122,18 @@ public class UserService implements IUserService {
 
     @Override
     public ReqRes logout(ReqRes logoutRequest) {
-        return null;
+        ReqRes response = new ReqRes();
+        try {
+            // Perform any necessary cleanup or token invalidation here
+            // For example, you might want to remove the token from a token store or blacklist it
+
+            response.setStatusCode(200);
+            response.setMessage("Successfully Logged Out");
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error occurred while logging out: " + e.getMessage());
+        }
+        return response;
     }
 
     @Override
@@ -181,6 +193,7 @@ public class UserService implements IUserService {
         return reqRes;
     }
 
+
     @Override
     public ReqRes updateUser(Integer userId, User updatedUser) {
         ReqRes reqRes = new ReqRes();
@@ -211,26 +224,31 @@ public class UserService implements IUserService {
         return reqRes;
     }
 
-    @Override
-    public ReqRes getMyInfo(String username) {
-        ReqRes reqRes = new ReqRes();
-        try {
-            Optional<User> userOptional = userRepository.findByUsername(username);
-            Optional<Staff> staffOptional = staffRepository.findById(userOptional.get().getId());
-            if (userOptional.isPresent()) {
-                reqRes.setUser(userOptional.get());
-                reqRes.setStatusCode(200);
-                reqRes.setMessage("successful");
-            } else {
-                reqRes.setStatusCode(404);
-                reqRes.setMessage("User not found for update");
-            }
-
-        }catch (Exception e){
-            reqRes.setStatusCode(500);
-            reqRes.setMessage("Error occurred while getting user info: " + e.getMessage());
+   @Override
+public ReqRes getMyInfo(String username) {
+    ReqRes reqRes = new ReqRes();
+    try {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User Not found"));
+        Staff staff = staffRepository.findByUser_Username(user.getUsername());
+        Role role = roleRepository.findById(user.getRole().getId()).orElseThrow(() -> new RuntimeException("Role Not found"));
+        UserDto userDto = new UserDto();
+        {
+            userDto.setId(user.getId());
+            userDto.setUsername(user.getUsername());
+            userDto.setRole(role.getName());
+            userDto.setFullName(staff.getFullName());
+            userDto.setAddress(staff.getAddress());
+            userDto.setDob(staff.getDob());
+            userDto.setPhoneNumber(staff.getPhoneNumber());
+            userDto.setPassword(user.getPassword());
+            reqRes.setUserDto(userDto);
+            reqRes.setStatusCode(200);
+            reqRes.setMessage("successful");
         }
-        return reqRes;
-
+    } catch (Exception e) {
+        reqRes.setStatusCode(500);
+        reqRes.setMessage("Error occurred while getting user info: " + e.getMessage());
     }
+    return reqRes;
+}
 }

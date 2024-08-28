@@ -23,8 +23,8 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             roleRepository.save(new Role("ADMIN"));
         }
 
-        if (roleRepository.findByName("USER") == null) {
-            roleRepository.save(new Role("USER"));
+        if (roleRepository.findByName("STAFF") == null) {
+            roleRepository.save(new Role("STAFF"));
         }
 
     }
