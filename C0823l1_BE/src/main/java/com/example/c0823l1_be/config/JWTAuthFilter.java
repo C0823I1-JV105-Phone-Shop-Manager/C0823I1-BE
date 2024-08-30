@@ -1,5 +1,6 @@
 package com.example.c0823l1_be.config;
 
+
 import com.example.c0823l1_be.security.JWTUtils;
 import com.example.c0823l1_be.service.StaffUserDetailsService;
 import jakarta.servlet.FilterChain;
@@ -24,7 +25,8 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     private JWTUtils jwtUtils;
 
     @Autowired
-    private StaffUserDetailsService staffUserDetailsService;
+    private StaffUserDetailsService detailsService;
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -33,25 +35,16 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         final String jwtToken;
         final String userEmail;
 
-        if (authHeader == null || authHeader.isBlank() || !authHeader.startsWith("Bearer ")) {
+        if (authHeader == null || authHeader.isBlank()) {
             filterChain.doFilter(request, response);
             return;
         }
 
         jwtToken = authHeader.substring(7);
-        try {
-            if (jwtToken.split("\\.").length != 3) {
-                throw new IllegalArgumentException("Invalid JWT token format");
-            }
-            userEmail = jwtUtils.extractUsername(jwtToken);
-        } catch (IllegalArgumentException e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.getWriter().write("Invalid JWT token: " + e.getMessage());
-            return;
-        }
+        userEmail = jwtUtils.extractUsername(jwtToken);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = staffUserDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = detailsService.loadUserByUsername(userEmail);
 
             if (jwtUtils.isTokenValid(jwtToken, userDetails)) {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();

@@ -8,6 +8,7 @@ import com.example.c0823l1_be.entity.User;
 import com.example.c0823l1_be.repository.RoleRepository;
 import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.repository.UserRepository;
+import com.example.c0823l1_be.security.ChangePasswordRequest;
 import com.example.c0823l1_be.service.IUserService;
 import com.example.c0823l1_be.security.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +37,7 @@ public class UserService implements IUserService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Override
     public ReqRes register(ReqRes registrationRequest) {
         ReqRes resp = new ReqRes();
@@ -158,20 +158,7 @@ public class UserService implements IUserService {
         }
     }
 
-    @Override
-    public ReqRes getUsersById(Integer id) {
-        ReqRes reqRes = new ReqRes();
-        try {
-            User usersById = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User Not found"));
-            reqRes.setUser(usersById);
-            reqRes.setStatusCode(200);
-            reqRes.setMessage("Users with id '" + id + "' found successfully");
-        } catch (Exception e) {
-            reqRes.setStatusCode(500);
-            reqRes.setMessage("Error occurred: " + e.getMessage());
-        }
-        return reqRes;
-    }
+
 
     @Override
     public ReqRes deleteUser(Integer userId) {
@@ -195,22 +182,24 @@ public class UserService implements IUserService {
 
 
     @Override
-    public ReqRes updateUser(Integer userId, User updatedUser) {
-        ReqRes reqRes = new ReqRes();
-        try {
-            Optional<User> userOptional = userRepository.findById(userId);
-            if (userOptional.isPresent()) {
-                User existingUser = userOptional.get();
-                existingUser.setUsername(updatedUser.getUsername());
-                existingUser.setRole(updatedUser.getRole());
-                // Check if password is present in the request
-                if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
-                    // Encode the password and update it
-                    existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
-                }
+public ReqRes updateUserInfo(Integer userId, UserDto updatedUser) {
+    ReqRes reqRes = new ReqRes();
+    try {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
+        Staff staff = staffRepository.findByUser_Username(user.getUsername());
+        if(user != null) {
 
-                User savedUser = userRepository.save(existingUser);
+            staff.setFullName(updatedUser.getFullName());
+            staff.setAddress(updatedUser.getAddress());
+            staff.setDob(updatedUser.getDob());
+            staff.setPhoneNumber(updatedUser.getPhoneNumber());
+            user.setUsername(updatedUser.getUsername());
+            Role newRole = roleRepository.findByName(updatedUser.getRole());
+            user.setRole(newRole);
+            User savedUser = userRepository.save(user);
+            Staff savedStaff = staffRepository.save(staff);
                 reqRes.setUser(savedUser);
+                reqRes.setStaff(savedStaff);
                 reqRes.setStatusCode(200);
                 reqRes.setMessage("User updated successfully");
             } else {
@@ -221,8 +210,8 @@ public class UserService implements IUserService {
             reqRes.setStatusCode(500);
             reqRes.setMessage("Error occurred while updating user: " + e.getMessage());
         }
-        return reqRes;
-    }
+    return reqRes;
+}
 
    @Override
 public ReqRes getMyInfo(String username) {
@@ -240,7 +229,6 @@ public ReqRes getMyInfo(String username) {
             userDto.setAddress(staff.getAddress());
             userDto.setDob(staff.getDob());
             userDto.setPhoneNumber(staff.getPhoneNumber());
-            userDto.setPassword(user.getPassword());
             reqRes.setUserDto(userDto);
             reqRes.setStatusCode(200);
             reqRes.setMessage("successful");
@@ -248,6 +236,44 @@ public ReqRes getMyInfo(String username) {
     } catch (Exception e) {
         reqRes.setStatusCode(500);
         reqRes.setMessage("Error occurred while getting user info: " + e.getMessage());
+    }
+    return reqRes;
+}
+    @Override
+    public ReqRes getMyPassword(String username) {
+        ReqRes reqRes = new ReqRes();
+        try {
+            User usersById = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User Not found"));
+            reqRes.setPassword(usersById.getPassword());
+            reqRes.setId(Long.valueOf(usersById.getId()));
+            reqRes.setStatusCode(200);
+            reqRes.setMessage("Users with username : '" + username + "' found successfully");
+        } catch (Exception e) {
+            reqRes.setStatusCode(500);
+            reqRes.setMessage("Error occurred: " + e.getMessage());
+        }
+        return reqRes;
+    }
+    @Override
+public ReqRes updateUserPassword(Integer userId, ChangePasswordRequest updatedPassword) {
+    ReqRes reqRes = new ReqRes();
+    try {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
+        // Check if the old password matches
+        if (!passwordEncoder.matches(updatedPassword.getCurrentPassword(), user.getPassword())) {
+            reqRes.setStatusCode(400);
+            reqRes.setMessage("Old password is incorrect");
+            return reqRes;
+        }
+        // Encode the new password and update it
+        user.setPassword(passwordEncoder.encode(updatedPassword.getNewPassword()));
+        userRepository.save(user);
+
+        reqRes.setStatusCode(200);
+        reqRes.setMessage("Password updated successfully");
+    } catch (Exception e) {
+        reqRes.setStatusCode(500);
+        reqRes.setMessage("Error occurred while updating password: " + e.getMessage());
     }
     return reqRes;
 }
