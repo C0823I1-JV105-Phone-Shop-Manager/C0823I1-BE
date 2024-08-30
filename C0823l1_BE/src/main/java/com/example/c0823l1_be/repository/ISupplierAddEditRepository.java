@@ -6,5 +6,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ISupplierAddEditRepository extends JpaRepository<Supplier,Integer> {
-
+    Integer countAllByUid(String uid);
+    Integer countAllByEmail(String email);
+    Integer countAllByPhone(String phone);
+    Supplier findSupplierByUid(String uid);
+    Supplier findSupplierById(Integer id);
+    Integer countAllByIdNotAndUid(Integer id, String uid);
+    Integer countAllByIdNotAndPhone(Integer id, String phone);
+    Integer countAllByIdNotAndEmail(Integer id, String email);
 }
