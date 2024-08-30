@@ -24,16 +24,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Autowired
-    private StaffUserDetailsService staffUserDetailsService;
+    private StaffUserDetailsService detailsService;
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(request-> request.requestMatchers("/auth/**", "/public/**" ).permitAll()
+                .authorizeHttpRequests(request-> request.requestMatchers("/auth/**", "/public/**").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
                         .requestMatchers("/staff/**").hasAnyAuthority("STAFF")
                         .requestMatchers("/adminstaff/**").hasAnyAuthority("ADMIN", "STAFF")
@@ -47,7 +46,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(staffUserDetailsService);
+        daoAuthenticationProvider.setUserDetailsService(detailsService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }

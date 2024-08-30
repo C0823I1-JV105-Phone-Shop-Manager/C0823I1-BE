@@ -1,7 +1,9 @@
 package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.dto.ReqRes;
+import com.example.c0823l1_be.dto.UserDto;
 import com.example.c0823l1_be.entity.User;
+import com.example.c0823l1_be.security.ChangePasswordRequest;
 import com.example.c0823l1_be.service.imp.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +24,20 @@ public class UserController {
 
     }
 
-    @GetMapping("/adminstaff/{userId}")
-    public ResponseEntity<ReqRes> getUserByID(@PathVariable Integer userId){
-        return ResponseEntity.ok(userService.getUsersById(userId));
+    @GetMapping("/adminstaff/password")
+    public ResponseEntity<ReqRes> getMyPassword(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return ResponseEntity.ok(userService.getMyPassword(username));
     }
 
-    @PutMapping("/admin/update/{userId}")
-    public ResponseEntity<ReqRes> updateUser(@PathVariable Integer userId, @RequestBody User reqres){
-        return ResponseEntity.ok(userService.updateUser(userId, reqres));
+    @PutMapping("/adminstaff/update/{userId}")
+    public ResponseEntity<ReqRes> updateUser(@PathVariable Integer userId, @RequestBody UserDto reqres){
+        return ResponseEntity.ok(userService.updateUserInfo(userId, reqres));
+    }
+    @PutMapping("/adminstaff/update/password/{userId}")
+    public ResponseEntity<ReqRes> updateUserPassword(@PathVariable Integer userId, @RequestBody ChangePasswordRequest reqres){
+        return ResponseEntity.ok(userService.updateUserPassword(userId, reqres));
     }
 
     @GetMapping("/adminstaff/profile")
