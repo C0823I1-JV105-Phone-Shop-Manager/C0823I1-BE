@@ -22,13 +22,11 @@ import java.time.LocalDate;
 public class CustomerDTO {
     private Integer id;
     @NotBlank(message = "Không được để trống")
-    @Size(min = 1, max = 100, message = "Tên người dùng không được để trống và nhỏ hơn 100 ký tự")
+    @Size(min = 1, max = 100, message = "Tên khách hàng không được để trống và nhỏ hơn 100 ký tự")
     private String name;
-
     @NotBlank(message = "Không được để trống")
     @Size(min = 9, max = 11, message = "Số điện thoại có 9 hoặc 11 số")
     private String phone;
-
     @Email(message = "Email không đúng định dạng")
     private String email;
     @PastOrPresent()
@@ -36,6 +34,4 @@ public class CustomerDTO {
     private LocalDate birthdate;
     @NotBlank(message = "Không được để trống")
     private String address;
-
-
 }

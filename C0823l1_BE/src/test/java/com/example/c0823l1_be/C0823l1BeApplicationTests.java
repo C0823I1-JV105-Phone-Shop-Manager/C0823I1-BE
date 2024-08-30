@@ -2,11 +2,15 @@ package com.example.c0823l1_be;
 
 import com.example.c0823l1_be.dto.CustomerDTO;
 import com.example.c0823l1_be.dto.CustomerViewDTO;
+import com.example.c0823l1_be.dto.OrderDTO;
 import com.example.c0823l1_be.entity.Customer;
 import com.example.c0823l1_be.entity.Order;
+import com.example.c0823l1_be.mapper.OrderMapper;
 import com.example.c0823l1_be.repository.ICustomerRepository;
 import com.example.c0823l1_be.repository.IOrderRepository;
 import org.junit.jupiter.api.Test;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -23,6 +27,9 @@ class C0823l1BeApplicationTests {
     IOrderRepository orderRepository;
     @Autowired
     ICustomerRepository customerRepository;
+
+    private OrderMapper orderMapper = Mappers.getMapper(OrderMapper.class);
+
     @Test
     void contextLoads() {
     }
@@ -30,7 +37,6 @@ class C0823l1BeApplicationTests {
     public void addOrder() {
 
         Order order = new Order();
-
 
         orderRepository.save(order);
         assertNotNull(orderRepository.findById(order.getId()));
@@ -51,5 +57,8 @@ class C0823l1BeApplicationTests {
         System.out.println(customerDTOS);
         assertNotNull(!customerDTOS.isEmpty());
     }
+
+
+
 
 }

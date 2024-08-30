@@ -12,6 +12,8 @@ import org.hibernate.annotations.SoftDelete;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "orders")
 @SoftDelete
@@ -37,6 +39,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "staff_id" , nullable = false)
     private Staff staff;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<ProductItem> productItemList;
 
     @CreationTimestamp
     @Column(updatable = false)

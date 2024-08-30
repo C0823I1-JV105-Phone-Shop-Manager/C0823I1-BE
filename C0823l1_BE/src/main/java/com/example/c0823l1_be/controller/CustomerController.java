@@ -2,7 +2,10 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.dto.CustomerDTO;
 import com.example.c0823l1_be.dto.CustomerViewDTO;
+import com.example.c0823l1_be.dto.OrderDTO;
 import com.example.c0823l1_be.entity.Customer;
+import com.example.c0823l1_be.entity.Order;
+import com.example.c0823l1_be.repository.IOrderRepository;
 import com.example.c0823l1_be.service.ICustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -20,6 +23,9 @@ public class CustomerController {
 
     @Autowired
     ICustomerService customerService;
+
+    @Autowired
+    IOrderRepository orderRepository;
 
 
     @GetMapping("/api/customers")
@@ -39,4 +45,17 @@ public class CustomerController {
         customerService.save(targetCustomer);
         return ResponseEntity.ok(targetCustomer);
     }
+
+
+    // test order
+    @PostMapping("/api/orders")
+    public ResponseEntity<?> createCustomer(@Valid @RequestBody OrderDTO orderDTO) {
+        System.out.println(orderDTO.toString());
+        Order targetOrder = new Order();
+        BeanUtils.copyProperties(orderDTO,targetOrder);
+        orderRepository.save(targetOrder);
+        return ResponseEntity.ok("OK");
+    }
+
+
 }
