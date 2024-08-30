@@ -184,33 +184,53 @@ public class UserService implements IUserService {
     @Override
 public ReqRes updateUserInfo(Integer userId, UserDto updatedUser) {
     ReqRes reqRes = new ReqRes();
-    try {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
-        Staff staff = staffRepository.findByUser_Username(user.getUsername());
-        if(user != null) {
+   try {
+    // Validate not empty fields
+    if (updatedUser.getFullName() == null || updatedUser.getFullName().isEmpty() ||
+        updatedUser.getAddress() == null || updatedUser.getAddress().isEmpty() ||
+        updatedUser.getDob() == null || updatedUser.getDob().isEmpty() ||
+        updatedUser.getPhoneNumber() == null || updatedUser.getPhoneNumber().isEmpty() ||
+        updatedUser.getUsername() == null || updatedUser.getUsername().isEmpty() ||
+        updatedUser.getRole() == null || updatedUser.getRole().isEmpty()) {
 
-            staff.setFullName(updatedUser.getFullName());
-            staff.setAddress(updatedUser.getAddress());
-            staff.setDob(updatedUser.getDob());
-            staff.setPhoneNumber(updatedUser.getPhoneNumber());
-            user.setUsername(updatedUser.getUsername());
-            Role newRole = roleRepository.findByName(updatedUser.getRole());
-            user.setRole(newRole);
-            User savedUser = userRepository.save(user);
-            Staff savedStaff = staffRepository.save(staff);
-                reqRes.setUser(savedUser);
-                reqRes.setStaff(savedStaff);
-                reqRes.setStatusCode(200);
-                reqRes.setMessage("User updated successfully");
-            } else {
-                reqRes.setStatusCode(404);
-                reqRes.setMessage("User not found for update");
-            }
-        } catch (Exception e) {
-            reqRes.setStatusCode(500);
-            reqRes.setMessage("Error occurred while updating user: " + e.getMessage());
-        }
-    return reqRes;
+        reqRes.setStatusCode(400);
+        reqRes.setMessage("All fields must be filled");
+        return reqRes;
+    }
+
+    // Validate dob format
+    String dobPattern = "\\d{4}/\\d{2}/\\d{2}";
+    if (!updatedUser.getDob().matches(dobPattern)) {
+        reqRes.setStatusCode(400);
+        reqRes.setMessage("Date of birth must be in the format yyyy/MM/dd");
+        return reqRes;
+    }
+
+    User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
+    Staff staff = staffRepository.findByUser_Username(user.getUsername());
+    if (user != null) {
+        staff.setFullName(updatedUser.getFullName());
+        staff.setAddress(updatedUser.getAddress());
+        staff.setDob(updatedUser.getDob());
+        staff.setPhoneNumber(updatedUser.getPhoneNumber());
+        user.setUsername(updatedUser.getUsername());
+        Role newRole = roleRepository.findByName(updatedUser.getRole());
+        user.setRole(newRole);
+        User savedUser = userRepository.save(user);
+        Staff savedStaff = staffRepository.save(staff);
+        reqRes.setUser(savedUser);
+        reqRes.setStaff(savedStaff);
+        reqRes.setStatusCode(200);
+        reqRes.setMessage("User updated successfully");
+    } else {
+        reqRes.setStatusCode(404);
+        reqRes.setMessage("User not found for update");
+    }
+} catch (Exception e) {
+    reqRes.setStatusCode(500);
+    reqRes.setMessage("Error occurred while updating user: " + e.getMessage());
+}
+   return reqRes;
 }
 
    @Override
@@ -265,6 +285,19 @@ public ReqRes updateUserPassword(Integer userId, ChangePasswordRequest updatedPa
             reqRes.setMessage("Old password is incorrect");
             return reqRes;
         }
+
+        if (passwordEncoder.matches(updatedPassword.getNewPassword(), user.getPassword())) {
+            reqRes.setStatusCode(400);
+            reqRes.setMessage("New password is the same as the old password");
+            return reqRes;
+        }
+
+       if ((updatedPassword.getNewPassword() == null || updatedPassword.getNewPassword().length() < 6) ||
+    (updatedPassword.getCurrentPassword() == null || updatedPassword.getCurrentPassword().length() < 6)) {
+    reqRes.setStatusCode(400);
+    reqRes.setMessage("Password must be at least 6 characters long");
+    return reqRes;
+}
         // Encode the new password and update it
         user.setPassword(passwordEncoder.encode(updatedPassword.getNewPassword()));
         userRepository.save(user);
