@@ -18,7 +18,7 @@ public class OrderDTO {
     @NotNull(message = "Không để trống")
     Staff staff;
     @NotNull(message = "Không để trống")
-    Customer customer;
+    CustomerDTO customer;
     @NotNull(message = "Đơn hàng phải chứa sản phẩm")
-    List<ProductItem> productItemList;
+    Integer[] productItemList;
 }

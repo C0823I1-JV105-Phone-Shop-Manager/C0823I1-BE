@@ -33,4 +33,9 @@ public class OrderService implements IOrderService {
     public void deleteById(String id) {
         orderRepository.deleteById(id);
     }
+
+    @Override
+    public <T> List<T> findBy(Class<T> clazz) {
+        return orderRepository.findBy(clazz);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.c0823l1_be.service;
 
+import com.example.c0823l1_be.dto.OrderViewDTO;
 import com.example.c0823l1_be.entity.Order;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface IOrderService {
     public <T> T findById(String id, Class<T> classType);
     public void save(Order order);
     public void deleteById(String id);
+    <T> List<T> findBy(Class<T> clazz);
 }

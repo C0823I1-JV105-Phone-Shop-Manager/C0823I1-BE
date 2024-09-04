@@ -19,6 +19,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
+@CrossOrigin(origins = "*")
 public class CustomerController {
 
     @Autowired
@@ -33,6 +35,7 @@ public class CustomerController {
                                          @RequestParam(required = false, defaultValue = "0", name = "page") int page)
 {
     Pageable pageable = PageRequest.of(page, 5);
+
     Page<CustomerViewDTO> customers = customerService.searchByCustomerName(name,pageable,CustomerViewDTO.class);
     return new ResponseEntity<>(customers, HttpStatus.OK);
 }
@@ -47,15 +50,6 @@ public class CustomerController {
     }
 
 
-    // test order
-    @PostMapping("/api/orders")
-    public ResponseEntity<?> createCustomer(@Valid @RequestBody OrderDTO orderDTO) {
-        System.out.println(orderDTO.toString());
-        Order targetOrder = new Order();
-        BeanUtils.copyProperties(orderDTO,targetOrder);
-        orderRepository.save(targetOrder);
-        return ResponseEntity.ok("OK");
-    }
 
 
 }

@@ -4,6 +4,8 @@ import com.example.c0823l1_be.entity.ProductItem;
 import com.example.c0823l1_be.repository.IProductItemRepository;
 import com.example.c0823l1_be.service.IProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class ProductItemService implements IProductItemService {
     }
 
     @Override
-    public <T> T searchByProductName(String name, Class<T> classType) {
-        return productItemRepository.findByProduct_NameContainingIgnoreCase(name,classType);
+    public <T> Page<T> searchByProductName(String name, Pageable pageable, Class<T> classType) {
+        return productItemRepository.findByProduct_NameContainingIgnoreCaseAndProductStatus_Id(name,1,pageable,classType);
     }
 }
