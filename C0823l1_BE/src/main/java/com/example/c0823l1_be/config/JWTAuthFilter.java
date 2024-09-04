@@ -1,7 +1,7 @@
 package com.example.c0823l1_be.config;
 
 
-import com.example.c0823l1_be.service.JWTUtils;
+import com.example.c0823l1_be.security.JWTUtils;
 import com.example.c0823l1_be.service.StaffUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -25,7 +25,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     private JWTUtils jwtUtils;
 
     @Autowired
-    private StaffUserDetailsService staffUserDetailsService;
+    private StaffUserDetailsService detailsService;
 
 
     @Override
@@ -44,7 +44,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         userEmail = jwtUtils.extractUsername(jwtToken);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = staffUserDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = detailsService.loadUserByUsername(userEmail);
 
             if (jwtUtils.isTokenValid(jwtToken, userDetails)) {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();

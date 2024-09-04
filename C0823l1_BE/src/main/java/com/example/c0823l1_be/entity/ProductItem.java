@@ -14,7 +14,7 @@ public class ProductItem {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "prodcut_id")
+    @JoinColumn(nullable = false, name = "product_id")
     private Product product;
 
     @Column(nullable = false)
