@@ -30,7 +30,6 @@ public class UserService implements IUserService {
     private RoleRepository roleRepository;
     @Autowired
     private StaffRepository staffRepository;
-
     @Autowired
     private JWTUtils jwtUtils;
     @Autowired
