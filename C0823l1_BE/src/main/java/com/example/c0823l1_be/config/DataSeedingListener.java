@@ -38,7 +38,6 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
         }
         if(userRepository.findByUsername("admin").isEmpty()){
             User admin = new User();
-            Staff staff = new Staff();
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("admin123"));
             admin.setRole(roleRepository.findByName("ADMIN"));
@@ -56,7 +55,6 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
         }
         if(userRepository.findByUsername("staff").isEmpty()){
             User admin = new User();
-            Staff staff = new Staff();
             admin.setUsername("staff");
             admin.setPassword(passwordEncoder.encode("staff123"));
             admin.setRole(roleRepository.findByName("STAFF"));
