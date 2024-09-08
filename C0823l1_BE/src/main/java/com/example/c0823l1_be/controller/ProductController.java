@@ -43,11 +43,11 @@ public class ProductController {
     @GetMapping("/filters")
     public ResponseEntity<?> filterProducts(
             @RequestParam(required = false, defaultValue = "0") int page,
-            @RequestParam(required = false) Integer price,
-            @RequestParam(required = false) String cpu,
-            @RequestParam(required = false) String camera,
-            @RequestParam(required = false) Integer storage,
-            @RequestParam(required = false) Integer brand) {
+            @RequestParam(required = false,defaultValue = "") Integer price,
+            @RequestParam(required = false,defaultValue = "") String cpu,
+            @RequestParam(required = false,defaultValue = "") String camera,
+            @RequestParam(required = false,defaultValue = "") Integer storage,
+            @RequestParam(required = false,defaultValue = "") Integer brand) {
         try {
             Pageable pageable = PageRequest.of(page, 8);
             Page<Product> products = productService.findProductsByFilters(price, cpu, camera, storage, brand, pageable);
