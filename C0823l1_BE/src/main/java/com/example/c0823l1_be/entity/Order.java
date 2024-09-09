@@ -47,4 +47,9 @@ public class Order {
     @Column(updatable = false)
     private Timestamp createdOn;
 
+    public void addProductItem(ProductItem item) {
+        productItemList.add(item);
+        item.setOrder(this); // Thiết lập order cho product
+    }
+
 }

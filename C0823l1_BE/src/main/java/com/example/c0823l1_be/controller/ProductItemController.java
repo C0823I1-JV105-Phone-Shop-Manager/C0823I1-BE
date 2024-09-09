@@ -27,7 +27,6 @@ public class ProductItemController {
                                      @RequestParam(required = false, defaultValue = "0", name = "page") int page)
 {
     Pageable pageable = PageRequest.of(page, 5);
-
     Page<ProductItemViewDTO> productItemViewDTOS = productItemService.searchByProductName(name,pageable,ProductItemViewDTO.class);
     return new ResponseEntity<>(productItemViewDTOS, HttpStatus.OK);
 }

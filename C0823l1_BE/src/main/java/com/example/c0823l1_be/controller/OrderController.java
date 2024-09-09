@@ -2,9 +2,12 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.dto.OrderDTO;
 import com.example.c0823l1_be.dto.OrderViewDTO;
+import com.example.c0823l1_be.entity.Customer;
 import com.example.c0823l1_be.entity.Order;
 import com.example.c0823l1_be.entity.ProductItem;
+import com.example.c0823l1_be.entity.Staff;
 import com.example.c0823l1_be.repository.IOrderRepository;
+import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.service.ICustomerService;
 import com.example.c0823l1_be.service.IOrderService;
 import com.example.c0823l1_be.service.IProductItemService;
@@ -26,10 +29,12 @@ public class OrderController {
 
     @Autowired
     ICustomerService customerService;
-@Autowired
+    @Autowired
     IProductItemService productItemService;
     @Autowired
     IOrderService orderService;
+    @Autowired
+    StaffRepository staffRepository;
     @GetMapping("/api/orders")
     public ResponseEntity<?> findAll()
     {
@@ -39,12 +44,19 @@ public class OrderController {
     // test order
     @PostMapping("/api/orders")
     public ResponseEntity<?> createOrder(@Valid @RequestBody OrderDTO orderDTO) {
-        System.out.println(orderDTO.getProductItemList());
         List <ProductItem> productItemList = Arrays.stream(orderDTO.getProductItemList()).map(id -> productItemService.findById(id, ProductItem.class)).collect(Collectors.toList());
-        System.out.println(productItemList);
-//        Order targetOrder = new Order();
-//        BeanUtils.copyProperties(orderDTO,targetOrder);
-//        orderRepository.save(targetOrder);
+        Order targetOrder = new Order();
+        Staff staff = staffRepository.findById(orderDTO.getStaff().getId()).get();
+        Customer customer = (Customer) customerService.findById(orderDTO.getCustomer().getId(), Customer.class);
+        targetOrder.setCustomer(customer);
+        targetOrder.setStaff(staff);
+        targetOrder.setProductItemList(productItemList);
+        Order saveOrder = orderService.save(targetOrder);
+        for (ProductItem productItem : productItemList) {
+           productItem.setOrder(saveOrder);
+           productItemService.save(productItem);
+        }
+        System.out.println(targetOrder.getId());
         return ResponseEntity.ok("OK");
     }
 
