@@ -2,8 +2,8 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.entity.Brand;
 import com.example.c0823l1_be.entity.Product;
-import com.example.c0823l1_be.service.imp.IBrandService;
-import com.example.c0823l1_be.service.imp.IProductService;
+import com.example.c0823l1_be.service.IBrandService;
+import com.example.c0823l1_be.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

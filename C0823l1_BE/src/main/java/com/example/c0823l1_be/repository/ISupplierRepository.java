@@ -12,11 +12,24 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface ISupplierRepository extends JpaRepository<Supplier, Integer> {
+
+    // Xóa nhiều nhà cung cấp theo danh sách UID
     @Modifying
-    @Query("DELETE FROM Supplier s WHERE s.id IN :ids")
-    void deleteAllById(@Param("ids") List<Integer> ids);
+    @Query("DELETE FROM Supplier s WHERE s.uid IN :uids")
+    void deleteAllByUid(@Param("uids") List<String> uids);
+
     Page<Supplier> findByName(String name, Pageable pageable);
 
-    @Query("SELECT s FROM Supplier s WHERE LOWER(s.uid) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(s.phone) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(s.name) LIKE LOWER(CONCAT('%', :search, '%'))")
+    @Query("SELECT s FROM Supplier s WHERE LOWER(s.uid) LIKE LOWER(CONCAT('%', :search, '%')) " +
+            "OR LOWER(s.phone) LIKE LOWER(CONCAT('%', :search, '%')) " +
+            "OR LOWER(s.name) LIKE LOWER(CONCAT('%', :search, '%'))")
     Page<Supplier> searchSuppliers(@Param("search") String search, Pageable pageable);
+
+    @Query("SELECT s FROM Supplier s WHERE s.name LIKE %:searchTerm% OR s.phone LIKE %:searchTerm%")
+    Page<Supplier> searchByNameOrPhone(@Param("searchTerm") String searchTerm, Pageable pageable);
+
+    @Query("SELECT s FROM Supplier s WHERE s.address LIKE %:address% AND (s.name LIKE %:searchTerm% OR s.phone LIKE %:searchTerm%)")
+    Page<Supplier> findByAddressContainingAndNameOrPhone(@Param("address") String address, @Param("searchTerm") String searchTerm, Pageable pageable);
+
 }
+

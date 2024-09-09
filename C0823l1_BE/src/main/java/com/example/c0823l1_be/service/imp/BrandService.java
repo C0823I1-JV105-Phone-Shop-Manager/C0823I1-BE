@@ -1,8 +1,8 @@
-package com.example.c0823l1_be.service;
+package com.example.c0823l1_be.service.imp;
 
 import com.example.c0823l1_be.entity.Brand;
 import com.example.c0823l1_be.repository.IBrandRepository;
-import com.example.c0823l1_be.service.imp.IBrandService;
+import com.example.c0823l1_be.service.IBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
