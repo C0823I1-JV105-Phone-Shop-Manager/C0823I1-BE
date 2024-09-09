@@ -2,15 +2,23 @@ package com.example.c0823l1_be.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.SoftDelete;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "product_item")
-@Data
+@SoftDelete
+@Setter
+@Getter
+@NoArgsConstructor
 public class ProductItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne
@@ -20,20 +28,17 @@ public class ProductItem {
     @Column(nullable = false)
     private String serial;
 
-    @Column(nullable = false, name = "import_date")
-    private Date importDate;
+    @Column(name = "import_date")
+    private LocalDate importDate;
 
-    @Column(nullable = false, name = "export_date")
-    private Date exportDate;
+    @Column( name = "export_date")
+    private LocalDate exportDate;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "product_status_id")
     private ProductStatus productStatus;
 
-    @Column(nullable = false)
-    private Boolean deleted = false;
-
     @ManyToOne
-    @JoinColumn(nullable = false, name = "order_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 }
