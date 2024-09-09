@@ -1,8 +1,10 @@
 package com.example.c0823l1_be.service.imp;
 
+import com.example.c0823l1_be.dto.SupplierUpdateDto;
 import com.example.c0823l1_be.entity.Supplier;
 import com.example.c0823l1_be.repository.ISupplierAddEditRepository;
 import com.example.c0823l1_be.service.ISupplierAddEditService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +51,13 @@ public class SupplierAddEditServiceImpl implements ISupplierAddEditService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public SupplierUpdateDto findSupplierById(Integer id) {
+        SupplierUpdateDto supplierUpdateDto = new SupplierUpdateDto();
+        Supplier supplier = iSupplierAddEditRepository.findById(id).orElse(null);
+        BeanUtils.copyProperties(supplier, supplierUpdateDto);
+        return supplierUpdateDto;
     }
 }

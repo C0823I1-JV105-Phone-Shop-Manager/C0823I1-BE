@@ -22,7 +22,7 @@ public class SupplierRestController {
     public ResponseEntity<?> createSupplier(@RequestBody @Validated SupplierAddDto supplierDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getFieldError());
-            return new ResponseEntity<>(HttpStatus.CONFLICT); //409 Xung đột dữ liệu có sẵn
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //400 Dữ liệu không hợp lệ
         }
         Supplier supplier = new Supplier();
         Boolean isSaveOK;
@@ -31,7 +31,7 @@ public class SupplierRestController {
         if (isSaveOK) {
             return new ResponseEntity<>(HttpStatus.CREATED); //201
         } else {
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY); //422 Không xác định được đối tượng
+            return new ResponseEntity<>(HttpStatus.CONFLICT); //409 Xung đột dữ liệu có sẵn
         }
     }
 
@@ -39,7 +39,7 @@ public class SupplierRestController {
     public ResponseEntity<?> updateSupplier(@RequestBody @Validated SupplierUpdateDto supplierDto, BindingResult bindingResult,@PathVariable Integer id) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getFieldError());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //409 Xung đột dữ liệu có sẵn
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //400 Dữ liệu không hợp lệ
         } else if (id == null ||  id <= 0) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         }
@@ -51,8 +51,16 @@ public class SupplierRestController {
         if (isSaveOK) {
             return new ResponseEntity<>(HttpStatus.CREATED); //201
         } else {
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY); //422 Không xác định được đối tượng
+            return new ResponseEntity<>(HttpStatus.CONFLICT); //409 Xung đột dữ liệu có sẵn
         }
     }
-
+    @GetMapping("/api/supplier/{id}")
+    public ResponseEntity<?> findSupplierById( @PathVariable Integer id){
+        SupplierUpdateDto supplierUpdateDto = iSupplierAddEditService.findSupplierById(id);
+        if (supplierUpdateDto == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return ResponseEntity.ok(supplierUpdateDto);
+        }
+    }
 }
