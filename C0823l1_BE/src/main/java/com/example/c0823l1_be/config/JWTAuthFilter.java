@@ -25,7 +25,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     private JWTUtils jwtUtils;
 
     @Autowired
-    private StaffUserDetailsService staffUserDetailsService;
+    private StaffUserDetailsService detailsService;
 
 
     @Override
@@ -33,7 +33,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
         final String authHeader = request.getHeader("Authorization");
         final String jwtToken;
-        final String username;
+        final String userEmail;
 
         if (authHeader == null || authHeader.isBlank()) {
             filterChain.doFilter(request, response);
@@ -41,10 +41,10 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         }
 
         jwtToken = authHeader.substring(7);
-        username = jwtUtils.extractUsername(jwtToken);
+        userEmail = jwtUtils.extractUsername(jwtToken);
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = staffUserDetailsService.loadUserByUsername(username);
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = detailsService.loadUserByUsername(userEmail);
 
             if (jwtUtils.isTokenValid(jwtToken, userDetails)) {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();

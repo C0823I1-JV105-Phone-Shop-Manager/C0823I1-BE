@@ -6,14 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReqRes {
-
+    private Long id;
     private int statusCode;
     private String error;
     private String message;
@@ -29,7 +28,7 @@ public class ReqRes {
     private String phoneNumber;
     private User user;
     private Staff staff;
+    private UserDto userDto;
     private List<User> userList;
     private List<Staff> staffList;
-
 }
