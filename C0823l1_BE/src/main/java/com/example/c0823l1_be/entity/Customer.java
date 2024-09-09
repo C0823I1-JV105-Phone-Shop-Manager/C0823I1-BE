@@ -2,15 +2,25 @@ package com.example.c0823l1_be.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SoftDelete;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Table
-@Data
+@SoftDelete
+@Setter
+@Getter
+@NoArgsConstructor
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false,length = 100)
@@ -23,15 +33,12 @@ public class Customer {
     private String email;
 
     @Column(nullable = false)
-    private Date bitrthdate;
+    private LocalDate birthdate;
 
     @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false,name = "register_date")
-    private Date registerdate;
-
-    @Column(nullable = false)
-    private boolean deleted = false;
-
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Timestamp registerDate;
 }
