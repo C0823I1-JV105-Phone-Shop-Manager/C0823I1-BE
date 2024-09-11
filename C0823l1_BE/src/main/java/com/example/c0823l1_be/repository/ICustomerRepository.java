@@ -13,5 +13,5 @@ import java.util.List;
 public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
     <T> List<T> findBy(Class<T> classType);
     <T> T findById(Integer id, Class<T> classType);
-    <T> Page<T> findByNameContainingIgnoreCase(String name, Pageable pageable, Class<T> classType);
+    <T> List<T> findByNameContainingIgnoreCase(String name,  Class<T> classType);
 }

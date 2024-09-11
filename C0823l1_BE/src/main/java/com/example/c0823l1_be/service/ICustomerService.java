@@ -12,5 +12,5 @@ public interface ICustomerService {
     public <T> T findById(int id, Class<T> classType);
     public void save(Customer customer);
     public void deleteById(int id);
-    <T> Page<T> searchByCustomerName(String name, Pageable pageable, Class<T> classType);
+    <T> List<T> searchByCustomerName(String name,  Class<T> classType);
 }

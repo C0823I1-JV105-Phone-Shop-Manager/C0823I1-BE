@@ -37,7 +37,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public <T> Page<T> searchByCustomerName(String name, Pageable pageable, Class<T> classType) {
-        return customerRepository.findByNameContainingIgnoreCase(name,pageable, classType);
+    public <T> List<T> searchByCustomerName(String name,  Class<T> classType) {
+        return customerRepository.findByNameContainingIgnoreCase(name, classType);
     }
 }
