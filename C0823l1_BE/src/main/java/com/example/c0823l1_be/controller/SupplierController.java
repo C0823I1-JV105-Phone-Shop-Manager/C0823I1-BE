@@ -24,6 +24,7 @@ public class SupplierController {
     public ResponseEntity<Page<SupplierDto>> showSupplier(@PageableDefault(page = 0, size = 5) Pageable pageable){
         Page<Supplier> suppliers = iSupplierService.findAll(pageable);
         Page<SupplierDto> supplierDTOs = suppliers.map(supplier -> new SupplierDto(
+                supplier.getId(),
                 supplier.getUid(),
                 supplier.getName(),
                 supplier.getAddress(),
@@ -49,6 +50,7 @@ public class SupplierController {
             @PageableDefault(page = 0, size = 5) Pageable pageable) {
         Page<Supplier> suppliers = iSupplierService.searchSuppliers(search, pageable);
         Page<SupplierDto> supplierDTOs = suppliers.map(supplier -> new SupplierDto(
+                supplier.getId(),
                 supplier.getUid(),
                 supplier.getName(),
                 supplier.getAddress(),

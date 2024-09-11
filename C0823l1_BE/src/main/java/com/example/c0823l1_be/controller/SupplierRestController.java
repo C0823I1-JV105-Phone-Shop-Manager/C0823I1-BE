@@ -47,6 +47,8 @@ public class SupplierRestController {
         supplierDto.setId(id);
         BeanUtils.copyProperties(supplierDto, supplier);
         Boolean isSaveOK;
+        System.out.println(supplierDto);
+        System.out.println(supplier);
         isSaveOK = iSupplierAddEditService.updateSupplier(supplier);
         if (isSaveOK) {
             return new ResponseEntity<>(HttpStatus.CREATED); //201

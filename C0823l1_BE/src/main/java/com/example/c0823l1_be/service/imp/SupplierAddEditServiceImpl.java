@@ -40,12 +40,15 @@ public class SupplierAddEditServiceImpl implements ISupplierAddEditService {
             Integer dbId = dbSupplier.getId();
             String dbUid = dbSupplier.getUid();
             if (curId == null || curId == 0 || dbId != curId || !dbUid.equals(currentlyUid)) {
+                System.out.println(1);
                 return false;
+
             } else if (iSupplierAddEditRepository.countAllByIdNotAndUid(curId, currentlyUid) > 0
                     || iSupplierAddEditRepository.countAllByIdNotAndPhone(curId, supplier.getPhone()) > 0
                     || iSupplierAddEditRepository.countAllByIdNotAndEmail(curId, supplier.getEmail()) > 0) {
                 return false;
             } else {
+                iSupplierAddEditRepository.save(supplier);
                 return true;
             }
         } catch (Exception e) {

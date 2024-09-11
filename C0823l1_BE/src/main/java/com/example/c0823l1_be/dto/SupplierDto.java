@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SupplierDto {
-
+    private Integer id;
     private String uid;
     private String name;
     private String address;
