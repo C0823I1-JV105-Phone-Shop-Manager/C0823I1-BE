@@ -35,7 +35,7 @@ public class SupplierRestController {
         }
     }
 
-    @PostMapping("/api/supplier/update/{id}")
+    @PutMapping("/api/supplier/update/{id}")
     public ResponseEntity<?> updateSupplier(@RequestBody @Validated SupplierUpdateDto supplierDto, BindingResult bindingResult,@PathVariable Integer id) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getFieldError());
@@ -58,7 +58,7 @@ public class SupplierRestController {
     public ResponseEntity<?> findSupplierById( @PathVariable Integer id){
         SupplierUpdateDto supplierUpdateDto = iSupplierAddEditService.findSupplierById(id);
         if (supplierUpdateDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         } else {
             return ResponseEntity.ok(supplierUpdateDto);
         }
