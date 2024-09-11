@@ -12,5 +12,5 @@ public interface IProductItemService {
     public <T> T findById(int id, Class<T> classType);
     public void save(ProductItem productItem);
     public void deleteById(int id);
-    <T> Page<T> searchByProductName(String name, Pageable pageable, Class<T> classType);
+    <T> List<T> searchByProductName(String name, Class<T> classType);
 }

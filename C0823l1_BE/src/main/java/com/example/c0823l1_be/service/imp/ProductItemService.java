@@ -34,7 +34,7 @@ public class ProductItemService implements IProductItemService {
     }
 
     @Override
-    public <T> Page<T> searchByProductName(String name, Pageable pageable, Class<T> classType) {
-        return productItemRepository.findByProduct_NameContainingIgnoreCaseAndProductStatus_Id(name,1,pageable,classType);
+    public <T> List<T> searchByProductName(String name,  Class<T> classType) {
+        return productItemRepository.findByProduct_NameContainingIgnoreCaseAndProductStatus_Id(name,1,classType);
     }
 }
