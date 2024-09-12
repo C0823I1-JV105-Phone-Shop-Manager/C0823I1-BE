@@ -31,4 +31,10 @@ public class ProductItemController {
     List<ProductItemViewDTO> productItemViewDTOS = productItemService.searchByProductName(name,ProductItemViewDTO.class);
     return new ResponseEntity<>(productItemViewDTOS, HttpStatus.OK);
 }
+    @GetMapping("/api/items/{id}")
+    public ResponseEntity<?> findById(@PathVariable int id)
+    {
+        ProductItemViewDTO productItemView = productItemService.findById(id,ProductItemViewDTO.class);
+        return new ResponseEntity<>(productItemView, HttpStatus.OK);
+    }
 }
