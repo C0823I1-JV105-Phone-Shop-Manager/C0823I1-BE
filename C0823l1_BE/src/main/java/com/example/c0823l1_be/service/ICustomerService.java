@@ -10,7 +10,7 @@ import java.util.List;
 public interface ICustomerService {
     public <T> List<T> findAll(Class<T> classType);
     public <T> T findById(int id, Class<T> classType);
-    public void save(Customer customer);
+    public Customer save(Customer customer);
     public void deleteById(int id);
     <T> List<T> searchByCustomerName(String name,  Class<T> classType);
 }

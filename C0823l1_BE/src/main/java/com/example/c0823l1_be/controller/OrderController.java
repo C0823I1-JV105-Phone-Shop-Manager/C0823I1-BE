@@ -2,15 +2,13 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.dto.OrderDTO;
 import com.example.c0823l1_be.dto.OrderViewDTO;
-import com.example.c0823l1_be.entity.Customer;
-import com.example.c0823l1_be.entity.Order;
-import com.example.c0823l1_be.entity.ProductItem;
-import com.example.c0823l1_be.entity.Staff;
+import com.example.c0823l1_be.entity.*;
 import com.example.c0823l1_be.repository.IOrderRepository;
 import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.service.ICustomerService;
 import com.example.c0823l1_be.service.IOrderService;
 import com.example.c0823l1_be.service.IProductItemService;
+import com.example.c0823l1_be.service.IProductStatusService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +33,8 @@ public class OrderController {
     IOrderService orderService;
     @Autowired
     StaffRepository staffRepository;
+    @Autowired
+    IProductStatusService productStatusService;
     @GetMapping("/api/orders")
     public ResponseEntity<?> findAll()
     {
@@ -47,17 +47,27 @@ public class OrderController {
         List <ProductItem> productItemList = Arrays.stream(orderDTO.getProductItemList()).map(id -> productItemService.findById(id, ProductItem.class)).collect(Collectors.toList());
         Order targetOrder = new Order();
         Staff staff = staffRepository.findById(orderDTO.getStaff().getId()).get();
-        Customer customer = (Customer) customerService.findById(orderDTO.getCustomer().getId(), Customer.class);
-        targetOrder.setCustomer(customer);
         targetOrder.setStaff(staff);
+
+        if (orderDTO.getCustomer().getId() != null) {
+            Customer existCustomer = (Customer) customerService.findById(orderDTO.getCustomer().getId(), Customer.class);
+            BeanUtils.copyProperties(orderDTO.getCustomer(), existCustomer);
+            targetOrder.setCustomer(existCustomer);
+        } else {
+            Customer newCustomer = new Customer();
+            BeanUtils.copyProperties(orderDTO.getCustomer(), newCustomer);
+            Customer createdCustomer = customerService.save(newCustomer);
+            targetOrder.setCustomer(createdCustomer);
+        }
         targetOrder.setProductItemList(productItemList);
         Order saveOrder = orderService.save(targetOrder);
         for (ProductItem productItem : productItemList) {
            productItem.setOrder(saveOrder);
+           productItem.setProductStatus(productStatusService.findById(2).get());
            productItemService.save(productItem);
         }
         System.out.println(targetOrder.getId());
-        return ResponseEntity.ok("OK");
+        return ResponseEntity.ok(orderService.findById(targetOrder.getId(), OrderViewDTO.class));
     }
 
 
