@@ -29,7 +29,7 @@ public class CustomerDTO {
     private String phone;
     @Email(message = "Email không đúng định dạng")
     private String email;
-    @PastOrPresent()
+    @PastOrPresent(message = "Không được sau ngày hiện tại")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
     @NotBlank(message = "Không được để trống")

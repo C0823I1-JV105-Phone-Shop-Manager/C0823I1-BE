@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 @CrossOrigin(origins = "*")
@@ -23,11 +25,16 @@ public class ProductItemController {
     IProductItemService productItemService;
 
     @GetMapping("/api/items")
-    public ResponseEntity<?> findAll(@RequestParam(required = false, defaultValue = "", name = "name") String name,
-                                     @RequestParam(required = false, defaultValue = "0", name = "page") int page)
+    public ResponseEntity<?> findAll(@RequestParam(required = false, defaultValue = "", name = "name") String name)
 {
-    Pageable pageable = PageRequest.of(page, 5);
-    Page<ProductItemViewDTO> productItemViewDTOS = productItemService.searchByProductName(name,pageable,ProductItemViewDTO.class);
+
+    List<ProductItemViewDTO> productItemViewDTOS = productItemService.searchByProductName(name,ProductItemViewDTO.class);
     return new ResponseEntity<>(productItemViewDTOS, HttpStatus.OK);
 }
+    @GetMapping("/api/items/{id}")
+    public ResponseEntity<?> findById(@PathVariable int id)
+    {
+        ProductItemViewDTO productItemView = productItemService.findById(id,ProductItemViewDTO.class);
+        return new ResponseEntity<>(productItemView, HttpStatus.OK);
+    }
 }

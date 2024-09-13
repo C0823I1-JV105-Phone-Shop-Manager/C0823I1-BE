@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 @CrossOrigin(origins = "*")
@@ -31,12 +33,11 @@ public class CustomerController {
 
 
     @GetMapping("/api/customers")
-    public ResponseEntity<?> searchCustomer( @RequestParam(required = false, defaultValue = "", name = "name") String name,
-                                         @RequestParam(required = false, defaultValue = "0", name = "page") int page)
+    public ResponseEntity<?> searchCustomer( @RequestParam(required = false, defaultValue = "", name = "name") String name)
 {
-    Pageable pageable = PageRequest.of(page, 5);
 
-    Page<CustomerViewDTO> customers = customerService.searchByCustomerName(name,pageable,CustomerViewDTO.class);
+
+    List<CustomerViewDTO> customers = customerService.searchByCustomerName(name,CustomerViewDTO.class);
     return new ResponseEntity<>(customers, HttpStatus.OK);
 }
 

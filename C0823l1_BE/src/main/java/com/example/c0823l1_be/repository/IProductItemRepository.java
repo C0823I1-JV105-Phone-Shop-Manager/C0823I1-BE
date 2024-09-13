@@ -12,5 +12,5 @@ import java.util.List;
 public interface IProductItemRepository extends JpaRepository<ProductItem,Integer> {
     <T> List<T> findBy(Class<T> classType);
     <T> T findById(Integer id, Class<T> classType);
-    <T> Page<T> findByProduct_NameContainingIgnoreCaseAndProductStatus_Id(String name,int id, Pageable pageable, Class<T> classType);
+    <T> List<T> findByProduct_NameContainingIgnoreCaseAndProductStatus_Id(String name,int id,  Class<T> classType);
 }
