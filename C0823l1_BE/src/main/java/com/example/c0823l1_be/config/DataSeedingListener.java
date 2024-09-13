@@ -48,7 +48,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             Staff staff = new Staff();
             staff.setFullName("admin");
             staff.setAddress("admin");
-            staff.setDob("11/11/1111");
+            staff.setDob("1111/11/11");
             staff.setPhoneNumber("0123456789");
             staff.setUser(admin);
             staffRepository.save(staff);
@@ -65,7 +65,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             Staff staff = new Staff();
             staff.setFullName("staff");
             staff.setAddress("staff");
-            staff.setDob("11/11/1111");
+            staff.setDob("1111/11/11");
             staff.setPhoneNumber("0123456789");
             staff.setUser(admin);
             staffRepository.save(staff);
