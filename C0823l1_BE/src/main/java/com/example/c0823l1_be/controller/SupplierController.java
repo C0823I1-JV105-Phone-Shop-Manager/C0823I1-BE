@@ -23,6 +23,11 @@ public class SupplierController {
     @Autowired
     private ISupplierService iSupplierService;
 
+    /**
+     * Lấy danh sách tất cả các nhà cung cấp với phân trang và sắp xếp.
+     * @param pageable Thông tin phân trang và sắp xếp.
+     * @return Danh sách nhà cung cấp dưới dạng DTO và phân trang.
+     */
     @GetMapping("")
     public ResponseEntity<Page<SupplierDto>> showSupplier(
             @PageableDefault(sort = "phone", direction = Sort.Direction.DESC) Pageable pageable) {
@@ -37,6 +42,11 @@ public class SupplierController {
         return ResponseEntity.ok(supplierDTOs);
     }
 
+    /**
+     * Xóa nhiều nhà cung cấp dựa trên danh sách UID.
+     * @param uids Danh sách UID của các nhà cung cấp cần xóa.
+     * @return Trạng thái của thao tác xóa.
+     */
     @PostMapping("/deleteByUid")
     public ResponseEntity<?> deleteSuppliersByUid(@RequestBody List<String> uids) {
         if (uids == null || uids.isEmpty()) {
@@ -52,6 +62,15 @@ public class SupplierController {
         }
     }
 
+    /**
+     * Tìm kiếm nhà cung cấp theo địa chỉ và từ khóa, với phân trang và sắp xếp.
+     * @param address Địa chỉ để tìm kiếm (có thể là null).
+     * @param search Từ khóa tìm kiếm theo tên hoặc số điện thoại (có thể là null).
+     * @param page Số trang hiện tại.
+     * @param size Số lượng nhà cung cấp mỗi trang.
+     * @param sort Tham số sắp xếp (ví dụ: "phone,desc").
+     * @return Danh sách nhà cung cấp theo điều kiện tìm kiếm và phân trang.
+     */
     @GetMapping("/search")
     public ResponseEntity<Page<SupplierDto>> searchSuppliers(
             @RequestParam(value = "address", required = false) String address,
