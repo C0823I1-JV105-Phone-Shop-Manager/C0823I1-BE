@@ -59,7 +59,7 @@ public class ProductController {
             Page<Product> products = productService.findProductsByFilters(price, cpu, camera, storage, brand, pageable);
 
             if (products.isEmpty()) {
-                return new ResponseEntity<>("No products found", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("Không tìm thấy sản phẩm ", HttpStatus.NOT_FOUND);
             }
 
             return new ResponseEntity<>(products, HttpStatus.OK);
@@ -93,7 +93,7 @@ public class ProductController {
     // Xóa sản phẩm theo ID
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
-        Optional<Product> product = productService.findProductById(id);
+        Optional<?> product = productService.findProductById(id);
 
         if (product.isPresent()) {
             productService.deleteProductById(id);
