@@ -1,6 +1,8 @@
 package com.example.c0823l1_be.controller;
 
+import com.example.c0823l1_be.entity.Brand;
 import com.example.c0823l1_be.entity.Product;
+import com.example.c0823l1_be.service.IBrandService;
 import com.example.c0823l1_be.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +22,9 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private IBrandService brandService;
 
     // Hiển thị tất cả sản phẩm
     @GetMapping("/products")
@@ -43,11 +49,11 @@ public class ProductController {
     @GetMapping("/filters")
     public ResponseEntity<?> filterProducts(
             @RequestParam(required = false, defaultValue = "0") int page,
-            @RequestParam(required = false) Integer price,
-            @RequestParam(required = false) String cpu,
-            @RequestParam(required = false) String camera,
-            @RequestParam(required = false) Integer storage,
-            @RequestParam(required = false) Integer brand) {
+            @RequestParam(required = false,defaultValue = "") Integer price,
+            @RequestParam(required = false,defaultValue = "") String cpu,
+            @RequestParam(required = false,defaultValue = "") String camera,
+            @RequestParam(required = false,defaultValue = "") Integer storage,
+            @RequestParam(required = false,defaultValue = "") Integer brand) {
         try {
             Pageable pageable = PageRequest.of(page, 8);
             Page<Product> products = productService.findProductsByFilters(price, cpu, camera, storage, brand, pageable);
@@ -107,27 +113,16 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/brands")
+    public ResponseEntity<?> showAllBrands() {
+        try {
+            List<Brand> brands = brandService.getAllBrands();
+            if (brands.isEmpty()) {
+                return new ResponseEntity<>("No products found", HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(brands, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("An error occurred while fetching the brands.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

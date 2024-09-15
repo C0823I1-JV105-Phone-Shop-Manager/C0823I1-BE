@@ -31,10 +31,17 @@ public class UserController {
         return ResponseEntity.ok(userService.getMyPassword(username));
     }
 
-    @PutMapping("/adminstaff/update/{userId}")
+    @PutMapping("/admin/update/{userId}")
     public ResponseEntity<ReqRes> updateUser(@PathVariable Integer userId, @RequestBody UserDto reqres){
         return ResponseEntity.ok(userService.updateUserInfo(userId, reqres));
     }
+
+    @PutMapping("/adminstaff/update/{userId}")
+    public ResponseEntity<ReqRes> updateUserByStaff(@PathVariable Integer userId, @RequestBody UserDto reqres){
+        return ResponseEntity.ok(userService.updateUserInfoByStaff(userId, reqres));
+    }
+
+
     @PutMapping("/adminstaff/update/password/{userId}")
     public ResponseEntity<ReqRes> updateUserPassword(@PathVariable Integer userId, @RequestBody ChangePasswordRequest reqres){
         return ResponseEntity.ok(userService.updateUserPassword(userId, reqres));
@@ -52,6 +59,7 @@ public class UserController {
     public ResponseEntity<ReqRes> deleteUser(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.deleteUser(userId));
     }
+
 
 
 }

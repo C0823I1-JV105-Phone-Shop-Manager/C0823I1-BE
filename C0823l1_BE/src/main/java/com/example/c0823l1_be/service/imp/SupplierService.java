@@ -3,16 +3,19 @@ package com.example.c0823l1_be.service.imp;
 import com.example.c0823l1_be.entity.Supplier;
 import com.example.c0823l1_be.repository.ISupplierRepository;
 import com.example.c0823l1_be.service.ISupplierService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class SupplierService implements ISupplierService {
+
     @Autowired
     private ISupplierRepository iSupplierRepository;
 
@@ -26,9 +29,14 @@ public class SupplierService implements ISupplierService {
         return iSupplierRepository.searchSuppliers(search, pageable);
     }
 
-
-    public void deleteByIds(List<Integer> ids) {
-        iSupplierRepository.deleteAllById(ids);
+    @Override
+    @Transactional
+    public void deleteByUids(List<String> uids) {
+        try {
+            iSupplierRepository.deleteAllByUid(uids);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -37,11 +45,7 @@ public class SupplierService implements ISupplierService {
     }
 
     @Override
-    public List<String> findAllSupplierNames() {
-        return iSupplierRepository.findAll()
-                .stream()
-                .map(Supplier::getName)
-                .collect(Collectors.toList());
+    public Page<Supplier> searchByAddressAndName(String address, String search, Pageable pageable) {
+        return iSupplierRepository.findByAddressContainingAndNameOrPhone(address, search, pageable);
     }
-
 }
