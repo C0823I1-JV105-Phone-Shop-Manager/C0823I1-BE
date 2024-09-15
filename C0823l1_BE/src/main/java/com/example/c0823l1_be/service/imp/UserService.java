@@ -40,8 +40,6 @@ public class UserService implements IUserService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Value("${jwt.accessTokenCookieName}")
-    private String cookieName;
 
     @Override
     public ReqRes register(ReqRes registrationRequest) {
@@ -77,7 +75,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ReqRes login(HttpServletResponse httpServletResponse, ReqRes loginRequest) {
+    public ReqRes login( ReqRes loginRequest) {
         ReqRes response = new ReqRes();
         try {
             authenticationManager
@@ -87,7 +85,6 @@ public class UserService implements IUserService {
             var user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
             var jwt = jwtUtils.generateToken(user);
             var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
-            CookieUtil.create(httpServletResponse, cookieName, jwt, false, -1, "localhost");
             response.setStatusCode(200);
             response.setToken(jwt);
             response.setRole(user.getRole().getName());

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public interface IUserService {
     public ReqRes register(ReqRes registrationRequest);
 
-    public ReqRes login(HttpServletResponse httpServletResponse, ReqRes loginRequest);
+    public ReqRes login( ReqRes loginRequest);
 
     public ReqRes refreshToken(ReqRes refreshTokenReqiest);
 
