@@ -8,17 +8,18 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM product WHERE LOWER(name) LIKE LOWER(CONCAT('%', :name, '%')) AND is_delete = false",
             countQuery = "SELECT COUNT(*) FROM product WHERE LOWER(name) LIKE LOWER(CONCAT('%', :name, '%')) AND is_delete = false",
             nativeQuery = true)
     Page<Product> findProductsByNameContainingIgnoreCase(@Param("name") String name, Pageable pageable);
+
     @Modifying
     @Query("UPDATE Product p SET p.isDelete = true WHERE p.id = :id")
     void deleteById(@Param("id") Long id);
 
-    // Truy vấn tìm kiếm sản phẩm theo các bộ lọc: price, cpu, camera, storage, brandId
     @Query(value = "SELECT " +
             "p.id, " +
             "p.camera, " +
@@ -31,14 +32,15 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "p.selfie_camera, " +
             "p.storage, " +
             "b.id AS brand_id, " +
-            "b.name AS brand_name " +
+            "b.name AS brand_name ," +
+            "p.is_delete " +
             "FROM shop_management.product p " +
             "JOIN shop_management.brand b ON p.brand_id = b.id " +
             "WHERE (:price IS NULL OR p.price = :price) " +
             "AND (:cpu IS NULL OR LOWER(p.cpu) LIKE LOWER(CONCAT('%', :cpu, '%'))) " +
             "AND (:camera IS NULL OR LOWER(p.camera) LIKE LOWER(CONCAT('%', :camera, '%'))) " +
             "AND (:storage IS NULL OR p.storage = :storage) " +
-            "AND (:brandId IS NULL OR p.brand_id = :brandId) ",
+            "AND (:brandId IS NULL OR p.brand_id = :brandId) " ,
             nativeQuery = true)
     Page<Product> findProductsByFilters(
             @Param("price") Integer price,
@@ -48,7 +50,6 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             @Param("brandId") Integer brandId,
             Pageable pageable);
 
-    // Tìm kiếm sản phẩm bằng từ khóa gần đúng trong name, cpu, hoặc camera
     @Query(value = "SELECT * FROM shop_management.product p " +
             "JOIN shop_management.brand b ON p.brand_id = b.id " +
             "WHERE (LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
@@ -59,7 +60,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "AND (:camera IS NULL OR LOWER(p.camera) LIKE LOWER(CONCAT('%', :camera, '%'))) " +
             "AND (:storage IS NULL OR p.storage = :storage) " +
             "AND (:brandId IS NULL OR p.brand_id = :brandId) " +
-            "AND Where p.is_delete = false",
+            "AND p.is_delete = false",
             nativeQuery = true)
     Page<Product> searchByKeywordWithFilters(
             @Param("keyword") String keyword,
@@ -70,21 +71,3 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             @Param("brandId") Integer brandId,
             Pageable pageable);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
