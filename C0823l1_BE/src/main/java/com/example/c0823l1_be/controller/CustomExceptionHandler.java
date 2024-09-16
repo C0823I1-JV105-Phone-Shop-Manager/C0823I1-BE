@@ -2,6 +2,7 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.entity.ValidateErrorResponse;
 import com.example.c0823l1_be.entity.ErrorResponse;
+import com.example.c0823l1_be.exception.ExistedEmailException;
 import org.springframework.http.*;
 import org.springframework.validation.FieldError;
 
@@ -39,5 +40,10 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
         ValidateErrorResponse error = new ValidateErrorResponse("Validation Failed", details);
         return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(ExistedEmailException.class)
+    public ResponseEntity<ErrorResponse> ExistedEmailExceptionHandler(ExistedEmailException ex, WebRequest request) {
+        ErrorResponse error = new ErrorResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
 }

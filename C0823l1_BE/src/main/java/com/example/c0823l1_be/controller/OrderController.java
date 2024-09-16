@@ -1,8 +1,10 @@
 package com.example.c0823l1_be.controller;
 
+import com.example.c0823l1_be.CustomValidator.annotation.ExistedCustomerEmail;
 import com.example.c0823l1_be.dto.OrderDTO;
 import com.example.c0823l1_be.dto.OrderViewDTO;
 import com.example.c0823l1_be.entity.*;
+import com.example.c0823l1_be.exception.ExistedEmailException;
 import com.example.c0823l1_be.repository.IOrderRepository;
 import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.service.ICustomerService;
@@ -54,6 +56,7 @@ public class OrderController {
             BeanUtils.copyProperties(orderDTO.getCustomer(), existCustomer);
             targetOrder.setCustomer(existCustomer);
         } else {
+//            if (customerService.findByEmail(orderDTO.getCustomer().getEmail()) !=null) throw new ExistedEmailException("Địa chỉ email đã tồn tại !");
             Customer newCustomer = new Customer();
             BeanUtils.copyProperties(orderDTO.getCustomer(), newCustomer);
             Customer createdCustomer = customerService.save(newCustomer);
@@ -67,7 +70,15 @@ public class OrderController {
            productItemService.save(productItem);
         }
         System.out.println(targetOrder.getId());
-        return ResponseEntity.ok(orderService.findById(targetOrder.getId(), OrderViewDTO.class));
+        return ResponseEntity.ok(orderService.findById(targetOrder.getId(), Order.class));
+    }
+
+
+    @GetMapping("/api/orders/{id}")
+    public ResponseEntity<?> findById(@PathVariable String id)
+    {
+        Order order = orderService.findById(id,Order.class);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
 
