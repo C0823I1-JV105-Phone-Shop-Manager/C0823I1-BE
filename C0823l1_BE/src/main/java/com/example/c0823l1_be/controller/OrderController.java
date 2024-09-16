@@ -67,7 +67,7 @@ public class OrderController {
            productItemService.save(productItem);
         }
         System.out.println(targetOrder.getId());
-        return ResponseEntity.ok(orderService.findById(targetOrder.getId(), OrderViewDTO.class));
+        return ResponseEntity.ok(orderService.findById(targetOrder.getId(), Order.class));
     }
 
 

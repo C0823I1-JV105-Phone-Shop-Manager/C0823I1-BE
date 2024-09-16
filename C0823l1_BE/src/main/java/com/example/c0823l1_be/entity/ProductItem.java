@@ -1,5 +1,6 @@
 package com.example.c0823l1_be.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -38,6 +39,7 @@ public class ProductItem {
     @JoinColumn(nullable = false, name = "product_status_id")
     private ProductStatus productStatus;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

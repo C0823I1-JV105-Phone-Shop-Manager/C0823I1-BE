@@ -13,4 +13,6 @@ public interface ICustomerService {
     public Customer save(Customer customer);
     public void deleteById(int id);
     <T> List<T> searchByCustomerName(String name,  Class<T> classType);
+
+    <T> T findByEmail(String email);
 }
