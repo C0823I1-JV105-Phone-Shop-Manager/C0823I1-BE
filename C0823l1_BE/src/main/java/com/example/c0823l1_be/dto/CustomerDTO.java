@@ -28,7 +28,7 @@ public class CustomerDTO {
     @NotBlank(message = "Không được để trống")
     @Size(min = 9, max = 11, message = "Số điện thoại có 9 hoặc 11 số")
     private String phone;
-    @ExistedCustomerEmail
+//    @ExistedCustomerEmail
     @Email(message = "Email không đúng định dạng")
     private String email;
     @PastOrPresent(message = "Không được sau ngày hiện tại")
