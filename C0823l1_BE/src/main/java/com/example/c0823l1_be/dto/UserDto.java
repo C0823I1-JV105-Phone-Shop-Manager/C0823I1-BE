@@ -14,7 +14,6 @@ package com.example.c0823l1_be.dto;
 @Builder
 public class UserDto  {
 
-    private Integer id;
     @NotEmpty
     private String username;
     @NotEmpty
