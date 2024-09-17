@@ -29,7 +29,7 @@ public class StaffController {
     public ResponseEntity<?> findStaffByName( @RequestParam(required = false, defaultValue = "", name = "name") String name)
 {
 
-    StaffViewDTO staff = staffService.findByUserName(name);
+    StaffViewDTO staff = staffService.findByUserName(name,StaffViewDTO.class);
     return new ResponseEntity<>(staff, HttpStatus.OK);
 }
 }
