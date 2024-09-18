@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="nav">
+    <a class="nav-link active" aria-current="page" href="/QA">List</a>
+    <a class="nav-link active" aria-current="page" href="/QACreate">Create</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+</nav>
+<body>
+<div class="container">
+    <h3 class="text-center">Danh sách người dùng</h3>
+    <br>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <td>STT</td>
+            <td>Tiêu đề</td>
+            <td>Loại câu hỏi</td>
+            <td>Ngày đăng</td>
+            <td>Tình trạng</td>
+            <td>Tính năng</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="QA:${qaList}">
+<!--            <td th:text="${iter.count}"></td>-->
+            <td th:text="${QA.QAcode}"></td>
+            <td th:text="${QA.tieuDe}"></td>
+            <td th:text="${QA.loaiCauHoi}"></td>
+            <td th:text="${QA.ngayDang}"></td>
+            <td th:text="${QA.daPhanHoi}"></td>
+            <td>
+                <a class="btn btn-primary"0> Cập nhật</a>
+                <button class="btn btn-danger" type="submit"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Xóa
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ae687863-e119-4c76-b25b-9aea0a16bcf5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/C0823l1BeApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/config/CorsConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/config/DataSeedingListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/config/JWTAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/dto/ReqRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/dto/StaffDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/dto/UserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Brand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/ProductItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/ProductStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Staff.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/Supplier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/SupplierProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/repository/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/service/IUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/service/JWTUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/service/StaffUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/java/com/example/c0823l1_be/service/imp/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C0823l1_BE/src/test/java/com/example/c0823l1_be/C0823l1BeApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss01_tong_quan_Spring_MVC/practice/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../ss01_tong_quan_Spring_MVC/practice/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../texxt.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/exercise/ex6_1_blog_app">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2hSXGLZEr4AaPfah7Sw6gxNAVwa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/OneDrive/Desktop/codegym/module4/ss06_jpa&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae687863-e119-4c76-b25b-9aea0a16bcf5" name="Changes" comment="" />
+      <created>1717588355313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717588355313</updated>
+      <workItem from="1717588356438" duration="21000" />
+      <workItem from="1717593925965" duration="45000" />
+      <workItem from="1718194150288" duration="4000" />
+      <workItem from="1724420455174" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

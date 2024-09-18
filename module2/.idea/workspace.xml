@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f23eac39-e2bb-4d9c-9f3e-2c7d4a0299fb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Module1/tesst/fda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/fumara_ERD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task01_b_add_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task01_create_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task02_show_nhan_vien_H_T_K_len_15.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task03_show_costomer_da_nang_quang_Tri_18_50_year_old.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task04_so_lan_Dat_phong_tung_khach_hang.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task05_show_customer_with_custom_info.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task06_show_service_Q1_2021.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/ss6_7_Case_Study_DB/task7_show_service_order_in_2020_not_in_2021.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2STNDl4MQZ9WYwVQOEfZs6ahaPe" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/Desktop/codegym/module2/src/finalTestPhone&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\Desktop\codegym\module2\src\finalTestPhone" />
+      <recent name="C:\Users\LENOVO\Desktop\codegym\module2\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClassNameValidate">
+    <configuration name="ClassNameValidate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss19_string_regex.excercise.exercise19_1_mail_regex.ClassNameValidate" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss19_string_regex.excercise.exercise19_1_mail_regex.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DebugWithWhile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss15_exception_debug.practice.DebugWithWhile" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss15_exception_debug.practice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InsertionSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss14_sorting_algorithms.excercise.InsertionSort" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss14_sorting_algorithms.excercise.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhoneView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="phoneManagerMVC.view.PhoneView" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="phoneManagerMVC.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="finalTest.view.ProductView" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="finalTest.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ProductView" />
+        <item itemvalue="Application.PhoneView" />
+        <item itemvalue="Application.ClassNameValidate" />
+        <item itemvalue="Application.DebugWithWhile" />
+        <item itemvalue="Application.InsertionSort" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f23eac39-e2bb-4d9c-9f3e-2c7d4a0299fb" name="Changes" comment="" />
+      <created>1689166493702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689166493702</updated>
+      <workItem from="1689166494448" duration="5539000" />
+      <workItem from="1689258688789" duration="5154000" />
+      <workItem from="1689333921728" duration="9096000" />
+      <workItem from="1689593407190" duration="9035000" />
+      <workItem from="1689689786450" duration="6354000" />
+      <workItem from="1689936494614" duration="10686000" />
+      <workItem from="1690201084893" duration="2274000" />
+      <workItem from="1690299269863" duration="796000" />
+      <workItem from="1690377563820" duration="3793000" />
+      <workItem from="1690468905551" duration="719000" />
+      <workItem from="1690547409441" duration="5099000" />
+      <workItem from="1690804036155" duration="8070000" />
+      <workItem from="1690973658351" duration="6510000" />
+      <workItem from="1691153574809" duration="4839000" />
+      <workItem from="1691409729570" duration="7179000" />
+      <workItem from="1691578530246" duration="11783000" />
+      <workItem from="1691760610246" duration="3429000" />
+      <workItem from="1692009888158" duration="11368000" />
+      <workItem from="1692191206125" duration="4922000" />
+      <workItem from="1692358430894" duration="7428000" />
+      <workItem from="1692618026380" duration="8645000" />
+      <workItem from="1692788257842" duration="10909000" />
+      <workItem from="1693219874722" duration="122000" />
+      <workItem from="1693220008915" duration="45000" />
+      <workItem from="1693220103733" duration="650000" />
+      <workItem from="1693220832352" duration="9405000" />
+      <workItem from="1693397079157" duration="4438000" />
+      <workItem from="1694170628699" duration="10438000" />
+      <workItem from="1694435270464" duration="4535000" />
+      <workItem from="1694535988200" duration="10730000" />
+      <workItem from="1694602595272" duration="12036000" />
+      <workItem from="1694775780103" duration="5228000" />
+      <workItem from="1694965962180" duration="11234000" />
+      <workItem from="1695034921513" duration="5375000" />
+      <workItem from="1695211252409" duration="7909000" />
+      <workItem from="1695219535082" duration="381000" />
+      <workItem from="1695222877630" duration="5801000" />
+      <workItem from="1695308882083" duration="6817000" />
+      <workItem from="1695382129647" duration="8861000" />
+      <workItem from="1698062860533" duration="71000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/finalTest/repository/ProductRepositoryImp.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/finalTestPhone/repository/PhoneRepositoryImp.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/finalTestPhone/controller/PhoneControllerImp.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/module2$P1_check_prime_number.ic" NAME="P1_check_prime_number Coverage Results" MODIFIED="1689168186491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ss02_loop.practice.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/module2$P3_tim_uoc_chung_lon_nhat.ic" NAME="P3_tim_uoc_chung_lon_nhat Coverage Results" MODIFIED="1689169727636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ss02_loop.practice.*</FILTER>
+    </SUITE>
+  </component>
+</project>

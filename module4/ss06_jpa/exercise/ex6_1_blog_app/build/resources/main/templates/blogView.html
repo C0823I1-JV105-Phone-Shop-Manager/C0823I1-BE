@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <h2 class="text-center text-info">JBA Blog</h2>
+    </div>
+    <div class="flex-row container">
+        <a class="nav nav-link btn-primary" href="/blog/create">Create</a>
+    </div>
+</nav>
+<body>
+<div class="container-fluid">
+    <hr>
+    <div class="border-dark" th:each="blog:${blog}">
+        <div>
+            <h4>
+                <a class="link-underline-light" th:href="@{'/blog/' + ${blog.id}}"><span th:text="${blog.title}"></span></a>
+                <a class="btn btn-primary text-white" th:href="@{/blog}">Trang chủ</a>
+            </h4>
+        </div>
+        <div class="text-info" style="font-style: italic; font-size: 12px"
+             th:text="'Create: ' + ${blog.dateCreate}">
+        </div>
+        <div class="text-info" style="font-style: italic; font-size: 12px"
+             th:text="'Lasted update: ' + ${blog.dateUpdate}">
+        </div>
+        <p th:text="${blog.content}"></p>
+        <div class="d-flex flex-row">
+            <div>
+                <label class="text-info">Tag</label>
+                <a class="link link-underline-danger link-underline-opacity-100" th:href="@{/blog}" th:text="${blog.blogType.typeString}"></a>
+            </div>
+            <div class="container fs-6 fst-italic">
+                <p class="text-dark" style="margin: 0; text-align: right; font-size: 12px">Writer</p>
+                <p class="text-dark" style="text-align: right; font-size: 12px" th:text="${blog.writer}"></p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+<script>
+    function deleteBlog(tieu_de, del_id) {
+        document.getElementById("deleteBlogTitle").innerText = tieu_de;
+        document.getElementById("delete_id").value = del_id
+    }
+</script>
+</html>

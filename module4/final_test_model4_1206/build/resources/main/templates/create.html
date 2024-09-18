@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Final Test</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="nav nav-pills nav-fill bg-light p-2">
+    <a class="nav-link bg-secondary text-white" aria-current="page" href="/">Danh sách khuyến mãi</a>
+    <a class="nav-link active" href="#">Thêm khuyến mãi</a>
+</nav>
+<body>
+<a class="btn btn-success active" aria-current="page" href="/">Danh sách câu hỏi</a>
+
+<div class="container p-5">
+    <form class="form-control" action="/create" method="post" th:object="${questionContentDTO}">
+        <div class="form-control border-0">
+            <label>Tiêu đề</label>
+            <input type="text" class="form-control" th:field="*{title}" th:value="${questionContentDTO}"
+                   th:text="${questionContentDTO.title}">
+            <p style="font-size: 70%; color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+        </div>
+        <div class="form-control border-0">
+            <label>Nội dung</label>
+            <textarea style="height:100px" class="form-control" th:field="*{content}"
+                      th:value="${questionContentDTO.content}"
+                      th:text="${questionContentDTO.content}"></textarea>
+            <p style="font-size: 70%; color: red" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+        </div>
+        <div class="form-control border-0">
+            <label>Loại câu hỏi</label>
+            <select class="form-control" name="nameType" th:field="*{questionType}">
+                <option th:each="timeName:${questionTypeList}" th:value="${timeName.idType}"
+                        th:text="${timeName.nameType}"></option>
+            </select>
+
+        </div>
+        <div class="text-center">
+            <a class="btn btn-warning btn-detail" href="/">Quay lại</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Lưu</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Lưu</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p> Bạn chắc chắn muốn lưu .....:</p>
+                        <span id="save_name"></span>
+                    </div>
+                    <form action="#" method="post">
+                        <input name="save_id" type="hidden" id="save_id">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-info">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.7.0.js}"></script>
+</html>

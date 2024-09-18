@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="76acaaf7-cbb6-44c4-8c1f-a6b3000056e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/controller/BlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/dto/BlogDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/models/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/models/BlogType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/repository/IBlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/repository/IBlogTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/service/IBlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/service/IBlogTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/service/impl/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/java/com/example/ex6_1_blog_app/service/impl/BlogTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/css/bootstrap.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.esm.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.esm.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.esm.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/blogDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/blogHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/blogPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/blogView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/createBlog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/ex6_1_blog_app/src/main/resources/templates/createBlogDto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/controllers/BlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/dto/PageSize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/model/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/model/BlogType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/repository/IBlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/repository/IBlogTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/service/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/service/BlogTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/service/IBlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/java/com/example/ex7_1_blog/service/IBlogTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/css/bootstrap.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.esm.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.esm.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.esm.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/templates/blogDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/templates/blogHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/templates/blogView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss07__demo_spring_data_jpa/exercise/ex7_1_blog/src/main/resources/templates/createBlog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/src/main/java/com/example/finaltest/FinalTestApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTest/src/test/java/com/example/finaltest/FinalTestApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../finalTestModule4/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../finalTestModule4/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss01_tong_quan_Spring_MVC/practice/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss01_tong_quan_Spring_MVC/practice/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/css/bootstrap.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.esm.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.esm.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.esm.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss08_validation/exercise/ex8_1_register_form/src/main/resources/static/js/bootstrap.min.js.map" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2fS9ijdHP1gaVdnofXId933ecWb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/LENOVO/OneDrive/Desktop/codegym/module4/ss3_thymeleaf_amp_views/exercise/ss03_1_products",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\resources" />
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\java\com\example\ss03_1_products\init" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\webapp\WEB-INF\views" />
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\resources" />
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\LENOVO\OneDrive\Desktop\codegym\module4\ss3_thymeleaf_amp_views\exercise\ss03_1_products\src\main\webapp" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="Gradle : com.example : ss03_1_products-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="52a646fb-e261-4fab-900d-d1ac0e517dd2" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57433" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : com.example : ss03_1_products-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76acaaf7-cbb6-44c4-8c1f-a6b3000056e4" name="Changes" comment="" />
+      <created>1713783740569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713783740569</updated>
+      <workItem from="1713783741549" duration="11192000" />
+      <workItem from="1713956853193" duration="5084000" />
+      <workItem from="1714734949611" duration="610000" />
+      <workItem from="1717590165490" duration="41000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/ss03_1_products/controllers/ProductController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

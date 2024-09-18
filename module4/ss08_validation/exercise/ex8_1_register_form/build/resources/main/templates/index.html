@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="nav">
+    <a class="nav-link active" aria-current="page" href="/account">List</a>
+    <a class="nav-link" href="/create">Create</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+</nav>
+<body>
+<div class="container">
+    <h3 class="text-center">Danh sách người dùng</h3>
+    <br>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <td>No.</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user:${usersList}">
+            <td th:text="${user.code}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.dob}"></td>
+            <td th:text="${user.phoneNumber}"></td>
+            <td th:text="${user.userEmail}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/{code}/update (code = ${user.code})}"> Update</a>
+                <button class="btn btn-danger" type="submit" th:data-name="${user.firstName}" th:data-code = "${user.code}"
+                        th:onclick="changeInfo(this.getAttribute('data-name'), this.getAttribute('data-code'))"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/delete" method="post">
+                <input id="codeUserDelete" name="codeUserDelete" type="hidden">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa học sinh?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có muốn xóa học sinh có tên là <span id="nameUser"></span> và code là <span
+                            id="codeUser"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+<script th:inline="javascript">
+    function changeInfo(name, code) {
+        document.getElementById("nameUser").innerText = name;
+        document.getElementById("codeUser").innerText = code;
+        document.getElementById("codeUserDelete").value = code;
+        console.log(name, code)
+    }
+</script>
+</html>

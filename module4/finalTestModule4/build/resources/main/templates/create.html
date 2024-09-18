@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="nav">
+    <a class="nav-link active" aria-current="page" href="/list">Danh sách giao dịch</a>
+    <a class="nav-link" href="/create">Tạo mới giao dịch</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+</nav>
+<body>
+<div class="container">
+    <form class="form-control " action="/create" method="post" th:object="${giaodich}">
+        <label>Mã giao dịch</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{transCode}">
+        <label>Loại bất động sản</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{typeDichVu.serviceName}">
+        <label>Ngày Giao dịch</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{transDate}">
+        <label>Đơn giá (VND)</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{transPrice}">
+        <label>Diện tích(m2)</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{transArea}">
+        <label>Tên khách hàng</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{khachHang.cusName}">
+        <label>Số điện thoại</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{khachHang.cusPhone}">
+        <label>Email</label>
+        <input class="form-control" type="text" name="transCode" th:field="*{khachHang.cusMail}">
+        <br>
+        <button class="btn btn-danger" type="submit" th:data-name="${giaodich.khachHang.cusName}"
+                th:data-code="${giaodich.transCode}"
+                th:onclick="changeInfo(this.getAttribute('data-name'), this.getAttribute('data-code'))"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+        </button>
+        <a class="btn btn-primary" th:href="@{/list}">Quay lại</a>
+    </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+<script th:inline="javascript">
+    function changeInfo(name, code) {
+        document.getElementById("nameUser").innerText = name;
+        document.getElementById("codeUser").innerText = code;
+        document.getElementById("codeUserDelete").value = code;
+        console.log(name, code)
+    }
+</script>
+</html>
