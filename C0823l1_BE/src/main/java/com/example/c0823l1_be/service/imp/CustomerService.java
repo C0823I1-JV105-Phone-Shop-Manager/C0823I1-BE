@@ -40,4 +40,9 @@ public class CustomerService implements ICustomerService {
     public <T> List<T> searchByCustomerName(String name,  Class<T> classType) {
         return customerRepository.findByNameContainingIgnoreCase(name, classType);
     }
+
+    @Override
+    public <T> T findByEmail(String email) {
+        return customerRepository.findByEmail(email);
+    }
 }

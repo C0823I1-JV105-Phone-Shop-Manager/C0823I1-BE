@@ -25,7 +25,7 @@ public class StaffService implements IStaffService {
     }
 
     @Override
-    public StaffViewDTO findByUserName(String name) {
-        return staffRepository.findByUser_Username(name,StaffViewDTO.class);
+    public <T> T findByUserName(String name,Class<T> clazz) {
+        return staffRepository.findByUser_Username(name,clazz);
     }
 }

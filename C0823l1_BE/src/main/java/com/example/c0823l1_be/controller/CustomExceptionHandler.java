@@ -2,6 +2,7 @@ package com.example.c0823l1_be.controller;
 
 import com.example.c0823l1_be.entity.ValidateErrorResponse;
 import com.example.c0823l1_be.entity.ErrorResponse;
+import com.example.c0823l1_be.exception.ExistedEmailException;
 import org.springframework.http.*;
 import org.springframework.validation.FieldError;
 
@@ -12,7 +13,9 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ControllerAdvice
@@ -22,7 +25,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request)
     {
         //creating exception response structure
-        ErrorResponse exceptionResponse= new ErrorResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+        ErrorResponse exceptionResponse= new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         //returning exception structure and specific status
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -33,11 +36,17 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
         Map<String,String> details = new HashMap<>();
+        List<String> errors = new ArrayList<>();
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-            details.put(error.getField(),error.getDefaultMessage());
+            errors.add(error.getDefaultMessage());
         }
 
-        ValidateErrorResponse error = new ValidateErrorResponse("Validation Failed", details);
-        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, LocalDateTime.now(), ex.getMessage(), errors);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(ExistedEmailException.class)
+    public ResponseEntity<ErrorResponse> ExistedEmailExceptionHandler(ExistedEmailException ex, WebRequest request) {
+        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, LocalDateTime.now(), ex.getMessage(), ex.getMessage());
+        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
 }

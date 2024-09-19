@@ -14,4 +14,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
     <T> List<T> findBy(Class<T> classType);
     <T> T findById(Integer id, Class<T> classType);
     <T> List<T> findByNameContainingIgnoreCase(String name,  Class<T> classType);
+
+    <T> T findByEmail(String email);
 }
