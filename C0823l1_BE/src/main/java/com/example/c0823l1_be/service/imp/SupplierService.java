@@ -9,9 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
-
 
 @Service
 public class SupplierService implements ISupplierService {
@@ -21,12 +19,22 @@ public class SupplierService implements ISupplierService {
 
     @Override
     public Page<Supplier> findAll(Pageable pageable) {
-        return iSupplierRepository.findAll(pageable);
+        return iSupplierRepository.findAllByIsDeletedFalse(pageable);
     }
 
     @Override
     public Page<Supplier> searchSuppliers(String search, Pageable pageable) {
         return iSupplierRepository.searchSuppliers(search, pageable);
+    }
+
+    @Override
+    @Transactional
+    public void softDeleteSuppliersByUids(List<String> uids) {
+        try {
+            iSupplierRepository.softDeleteByUids(uids);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -41,7 +49,7 @@ public class SupplierService implements ISupplierService {
 
     @Override
     public Page<Supplier> searchByName(String name, Pageable pageable) {
-        return iSupplierRepository.findByName(name, pageable);
+        return iSupplierRepository.findByNameAndIsDeletedFalse(name, pageable);
     }
 
     @Override
