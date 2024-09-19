@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface IStaffService {
     public List<Staff> findAll();
-    public StaffViewDTO findByUserName(String name);
+    public <T> T findByUserName(String name, Class<T> clazz);
 }
