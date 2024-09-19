@@ -9,13 +9,9 @@ import com.example.c0823l1_be.repository.RoleRepository;
 import com.example.c0823l1_be.repository.StaffRepository;
 import com.example.c0823l1_be.repository.UserRepository;
 import com.example.c0823l1_be.security.ChangePasswordRequest;
-import com.example.c0823l1_be.security.CookieUtil;
 import com.example.c0823l1_be.service.IUserService;
 import com.example.c0823l1_be.security.JWTUtils;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -236,7 +232,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ReqRes updateUserInfoByStaff(Integer userId, UserDto updatedUser) {
+    public ReqRes updateUserInfoByStaff(String username, UserDto updatedUser) {
         ReqRes reqRes = new ReqRes();
         try {
             // Validate not empty fields
@@ -266,8 +262,16 @@ public class UserService implements IUserService {
                 reqRes.setMessage("Username must contain only letters, with a minimum length of 5 characters");
                 return reqRes;
             }
+            //Validate full name
+            String fullNamePattern = "^[\\p{L}\\s]+$";
+            if (!updatedUser.getFullName().matches(fullNamePattern)) {
+                reqRes.setStatusCode(400);
+                reqRes.setMessage("Full name must contain only letters");
+                return reqRes;
+            }
+
             Optional<User> existingUser = userRepository.findByUsername(updatedUser.getUsername());
-            if (existingUser.isPresent() && !existingUser.get().getId().equals(userId)) {
+            if (existingUser.isPresent() && !existingUser.get().getUsername().equals(username)) {
                 reqRes.setStatusCode(400);
                 reqRes.setMessage("Username already exists");
                 return reqRes;
@@ -280,7 +284,7 @@ public class UserService implements IUserService {
                 return reqRes;
             }
 
-            User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
+            User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User Not found"));
             Staff staff = staffRepository.findByUser_Username(user.getUsername());
             if (user != null) {
                 staff.setFullName(updatedUser.getFullName());
@@ -319,7 +323,6 @@ public class UserService implements IUserService {
             Role role = roleRepository.findById(user.getRole().getId()).orElseThrow(() -> new RuntimeException("Role Not found"));
             UserDto userDto = new UserDto();
             {
-                userDto.setId(user.getId());
                 userDto.setUsername(user.getUsername());
                 userDto.setRole(role.getName());
                 userDto.setFullName(staff.getFullName());
@@ -353,10 +356,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ReqRes updateUserPassword(Integer userId, ChangePasswordRequest updatedPassword) {
+    public ReqRes updateUserPassword(String username, ChangePasswordRequest updatedPassword) {
         ReqRes reqRes = new ReqRes();
         try {
-            User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not found"));
+            User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User Not found"));
             // Check if the old password matches
             if (!passwordEncoder.matches(updatedPassword.getCurrentPassword(), user.getPassword())) {
                 reqRes.setStatusCode(400);

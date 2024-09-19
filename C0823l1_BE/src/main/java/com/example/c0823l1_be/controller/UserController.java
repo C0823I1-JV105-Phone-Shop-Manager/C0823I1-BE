@@ -24,27 +24,25 @@ public class UserController {
 
     }
 
-    @GetMapping("/adminstaff/password")
-    public ResponseEntity<ReqRes> getMyPassword(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        return ResponseEntity.ok(userService.getMyPassword(username));
-    }
 
     @PutMapping("/admin/update/{userId}")
     public ResponseEntity<ReqRes> updateUser(@PathVariable Integer userId, @RequestBody UserDto reqres){
         return ResponseEntity.ok(userService.updateUserInfo(userId, reqres));
     }
 
-    @PutMapping("/adminstaff/update/{userId}")
-    public ResponseEntity<ReqRes> updateUserByStaff(@PathVariable Integer userId, @RequestBody UserDto reqres){
-        return ResponseEntity.ok(userService.updateUserInfoByStaff(userId, reqres));
+    @PutMapping("/adminstaff/update")
+    public ResponseEntity<ReqRes> updateUserByStaff( @RequestBody UserDto reqres){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return ResponseEntity.ok(userService.updateUserInfoByStaff(username, reqres));
     }
 
 
-    @PutMapping("/adminstaff/update/password/{userId}")
-    public ResponseEntity<ReqRes> updateUserPassword(@PathVariable Integer userId, @RequestBody ChangePasswordRequest reqres){
-        return ResponseEntity.ok(userService.updateUserPassword(userId, reqres));
+    @PutMapping("/adminstaff/update/password")
+    public ResponseEntity<ReqRes> updateUserPassword(@RequestBody ChangePasswordRequest reqres){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return ResponseEntity.ok(userService.updateUserPassword(username, reqres));
     }
 
     @GetMapping("/adminstaff/profile")
