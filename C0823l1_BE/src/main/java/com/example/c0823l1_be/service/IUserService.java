@@ -20,7 +20,7 @@ public interface IUserService {
 
     public ReqRes getMyPassword(String username);
 
-    public ReqRes updateUserInfoByStaff(Integer userId, UserDto updatedUser);
+    public ReqRes updateUserInfoByStaff(String username, UserDto updatedUser);
 
     public ReqRes deleteUser(Integer userId);
 
@@ -28,7 +28,7 @@ public interface IUserService {
 
     public ReqRes getMyInfo(String username);
 
-    public ReqRes updateUserPassword(Integer userId, ChangePasswordRequest updatePassword);
+    public ReqRes updateUserPassword(String username, ChangePasswordRequest updatePassword);
 
 
 
