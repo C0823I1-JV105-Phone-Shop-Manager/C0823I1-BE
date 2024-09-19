@@ -80,17 +80,14 @@ public class SupplierController {
             @RequestParam(value = "size", defaultValue = "5") int size,
             @RequestParam(value = "sort", defaultValue = "phone,desc") String sort) {
 
-        // Tách các tham số sắp xếp từ chuỗi sort
         String[] sortParams = sort.split(",");
         Sort.Direction direction = sortParams.length > 1 && sortParams[1].equalsIgnoreCase("desc")
                 ? Sort.Direction.DESC
                 : Sort.Direction.ASC;
         Sort sortSpecification = Sort.by(direction, sortParams[0]);
 
-        // Tạo Pageable với các tham số sắp xếp và phân trang
         Pageable pageable = PageRequest.of(page, size, sortSpecification);
 
-        // Tìm kiếm và chuyển đổi sang DTO
         Page<Supplier> suppliers = iSupplierService.searchByAddressAndName(address, search, pageable);
         Page<SupplierDto> supplierDTOs = suppliers.map(supplier -> new SupplierDto(
                 supplier.getId(),
@@ -103,5 +100,18 @@ public class SupplierController {
         return ResponseEntity.ok(supplierDTOs);
     }
 
+    @PostMapping("/softDeleteByUids")
+    public ResponseEntity<?> softDeleteSuppliersByUid(@RequestBody List<String> uids) {
+        if (uids == null || uids.isEmpty()) {
+            return ResponseEntity.badRequest().body("Không có UID nhà cung cấp nào được cung cấp để xóa mềm.");
+        }
+        try {
+            iSupplierService.softDeleteSuppliersByUids(uids);
+            return ResponseEntity.ok().body("Nhà cung cấp đã xóa mềm thành công.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Không xóa mềm được nhà cung cấp.");
+        }
+    }
 }
 
