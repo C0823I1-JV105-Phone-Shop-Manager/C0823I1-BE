@@ -1,6 +1,8 @@
 package com.example.c0823l1_be.controller;
 
+import com.example.c0823l1_be.entity.Brand;
 import com.example.c0823l1_be.entity.Product;
+import com.example.c0823l1_be.service.IBrandService;
 import com.example.c0823l1_be.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +22,9 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private IBrandService brandService;
 
     // Hiển thị tất cả sản phẩm
     @GetMapping("/products")
@@ -107,6 +113,19 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/brands")
+    public ResponseEntity<?> showAllBrands() {
+        try {
+            List<Brand> brands = brandService.getAllBrands();
+            if (brands.isEmpty()) {
+                return new ResponseEntity<>("No products found", HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(brands, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("An error occurred while fetching the brands.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
 
 
@@ -244,18 +263,7 @@ public class ProductController {
 //            return ResponseEntity.notFound().build();
 //        }
 //    }
-//    @GetMapping("/brands")
-//    public ResponseEntity<?> showAllBrands() {
-//        try {
-//            List<Brand> brands = brandService.getAllBrands();
-//            if (brands.isEmpty()) {
-//                return new ResponseEntity<>("No products found", HttpStatus.NOT_FOUND);
-//            }
-//            return new ResponseEntity<>(brands, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>("An error occurred while fetching the brands.", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+
 //
 //
 //}
