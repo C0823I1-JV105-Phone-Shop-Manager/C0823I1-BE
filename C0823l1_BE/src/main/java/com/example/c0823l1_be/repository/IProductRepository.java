@@ -28,7 +28,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "b.name AS brand_name " +
             "FROM shop_management.product p " +
             "JOIN shop_management.brand b ON p.brand_id = b.id " +
-            "WHERE (:price IS NULL OR p.price = :price) " +
+            "WHERE (:price IS NULL OR p.price <= :price) " +
             "AND (:cpu IS NULL OR LOWER(p.cpu) LIKE LOWER(CONCAT('%', :cpu, '%'))) " +
             "AND (:camera IS NULL OR LOWER(p.camera) LIKE LOWER(CONCAT('%', :camera, '%'))) " +
             "AND (:storage IS NULL OR p.storage = :storage) " +
@@ -48,7 +48,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "WHERE (LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(p.cpu) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(p.camera) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
-            "AND (:price IS NULL OR p.price <= :price) " +
+            "AND (:price IS NULL OR p.price = :price) " +
             "AND (:cpu IS NULL OR LOWER(p.cpu) LIKE LOWER(CONCAT('%', :cpu, '%'))) " +
             "AND (:camera IS NULL OR LOWER(p.camera) LIKE LOWER(CONCAT('%', :camera, '%'))) " +
             "AND (:storage IS NULL OR p.storage = :storage) " +
